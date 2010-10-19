@@ -1,0 +1,12 @@
+body {
+  margin: 0px auto;
+  width: 50em;
+}
+h1, h2, h3 {
+  font-family: "Museo Sans", Verdana, Helvetica, sans-serif;
+}
+p, li {
+  width: 40em;
+  margin-left: 70px;
+  font-family: Georgia, "Times New Roman", serif;
+}
