@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <title>Web Console in Firefox 4</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $(".bug").each(function(index, elem) {
+          var bugNumber = elem.innerHTML;
+          var lastSpace = bugNumber.lastIndexOf(" ");
+          if (lastSpace > -1) {
+            bugNumber = bugNumber.substring(lastSpace + 1);
+          }
+          elem.setAttribute("href", "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugNumber);
+          elem.setAttribute("target", "_blank");
+        });
+      });
+    </script>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Firefox 4 Web Console</h1>
+    <p>kdangoor@mozilla.com, October 20, 2010</p>
+    <h2>Overview</h2>
+    <p>The Web Console feature in Firefox 4 is an important tool for developers. This document describes some of the details of the Web Console feature. Unlike most specs, this spec is being written near the end of development. It will be used to help QA and end-user documentation efforts and to visualize the work that remains.</p>
+    <p>The best background on how to use the Web Console is in my <a href="http://www.blueskyonmars.com/2010/09/01/introducing-the-web-console/">tutorial blog post</a>.</p>
+    
+    <h2>Logging Functionality</h2>
+    
+    <h3>Messages Before the Console is Opened</h3>
+    <p>The Error Console and the Chrome's console both have the ability to display messages that
+      were logged before the console was opened. The Web Console should also display messages that were logged before the console was opened. (bugs <a class="bug">568629</a>, <a class="bug">587734</a> and <a class="bug">601260</a> apply here.)</p>
+    
+    <h3>Keep Track of file:// Loading</h3>
+    <p>When opening a page over the network, you can see which resources where requested. When loading from a local file, you should see similar log entries displayed for loaded resources. The entries displayed for local resources will not be clickable (because there's no HTTP request metadata to go with the loading of that resource). This is <a class="bug">bug 595223</a>.</p>
+    
+    <h3>Request/response Body Logging</h3>
+    <p>The logging of request and response bodies can consume a lot of memory and slow the browser down. This logging can be toggled on and off, and is limited to 1MB (<a class="bug">bug 598851</a> adds the 1MB limit). <a class="bug">bug 602572</a> is also relevant.</p>
+    
+    <h3>Private Browsing</h3>
+    <p>When the user transitions into or out of Private Browsing mode, data that is cached within the console service should be cleared. <a class="bug">bug 602199</a></p>
+    
+    <h3>How Messages Appear in the Log</h3>
+    <p>In the log output, several kinds of messages can appear:</p>
+    <ul>
+      <li>Network messages</li>
+      <li>CSS errors and warnings</li>
+      <li>JavaScript errors and warnings</li>
+      <li>Messages logged by user code using the window.console object at the error, warn, info and log levels</li>
+    </ul>
+    
+    <p>CSS and JavaScript errors and warnings are logged through the same mechanism and using the same levels as window.console messages. This allows users to filter the warnings and errors. <a class="bug">bug 601177</a></p>
+    
+    <h2>UI Features</h2>
+    <div class="image">
+      <img src="images/TheConsole.png">
+      <div>Web Console, 10/1</div>
+    </div>
+    
+    <div class="image">
+      <img src="images/ToolbarAndColorCoding.png">
+      <div>Proposed toolbar button style and message color coding (note: clear button/search box missing)</div>
+    </div>
+    
+    <h3>Web Console Chrome</h3>
+    <ul>
+      <li>The styles applied by Personas should have no impact on the Web Console's appearance (<a class="bug">bug 601196).</a></li>
+    
+      <li>Unchecking the Network, CSS and JS buttons will filter out those messages from the output. (<a class="bug">bug 589162</a> for CSS filtering not working)</li>
+      
+      <li>Unchecking the Warnings button will filter out all warnings, whether they came from console.warn or are JavaScript or CSS warnings. <a class="bug">601177</a>.</li>
+    
+      <li>Clearing the console should be easy and discoverable (<a class="bug">bug 601179</a>).</li>
+      <li>UI elements should be aligned cleanly (<a class="bug">bug 598519</a>)</li>
+    </ul>
+    
+    <h3>Log output</h3>
+    
+    <ul>
+      <li>Log output is displayed in a modern monospaced font <a class="bug">574103</a>.</li>
+      <li>Timestamp and message type (Network, Exception, CSS Warning?) are visibly distinct from the remainder of the log output and consistent from message type to message type. Bugs <a class="bug">601671</a> and <a class="bug">601672</a>.</li>
+      <li>Network log entries have a clickable area (<span class="todo">where?</span>) to display detailed information about the request. <a class="bug">601675</a></li>
+      <li>A dividing line should appear between requests (or periodically, depending on implementation feasibility) <a class="bug">bug 601464</a></li>
+      <li>Filtering the log output should not change the scrolling behavior as new entries arrive (<a class="bug">bug 597460</a>).</li>
+    
+      <li>JavaScript and CSS errors should link to a view of the source file when an error occurs (<a class="bug">Bug 588379</a>).</li>
+    
+      <li>Only a standard mouse click (not right click, etc.) opens the network inspector (<a class="bug">bug 594477</a>) or object inspector.</li>
+      <li>Empty groupings of elements should be collapsed to avoid a string of dividers appearing (<a class="bug">bug 599240</a>)</li>
+      <li>Logged evaluated JavaScript expressions use the same &gt;-like glyph as the command line itself, not an actual &gt; <a class="bug">bug 601681</a>.</li>
+    
+      <li>Clicking on a primitive value should not open the Object Inspector and primitive values should not have styling that appears clickable (<a class="bug">bug 598357</a>).
+        <div class="image">
+          <img src="images/ObjectInspectorForPrimitive.png">
+          <div>Object Inspector looking at a primitive</div>
+        </div>
+      </li>
+    </ul>
+    
+    
+    <h3>Command Line</h3>
+    <div class="image">
+      <img src="images/JSCommandLine.png">
+      <div>JavaScript expression evaluation</div>
+    </div>
+    <ul>
+      <li>When you enter an expression at the command line, the result of that expression should be scrolled into view (<a class="bug">bug 601352</a>).</li>
+      <li>Proposed completion text should be visually distinct from the user-typed text <a class="bug">bug 601183</a></li>
+      <li>JavaScript is evaluated in a sandbox that has access to the page's window object but does not pollute the page namespace by default.</li>
+      <li>Any standard JavaScript expression can be evaluated and return the result the user expects (<a class="bug">bug 599940</a> for instanceof problem)</li>
+    </ul>
+    
+    <h3>Network Inspector</h3>
+    <div class="image">
+      <img src="images/NetworkInspector.png">
+      <div>Network inspector</div>
+    </div>
+    <ul>
+      <li>Clean up/align headings? <span class="todo">bug?</span></li>
+    </ul>
+    
+    <p>The popup Network Inspector panel displays the time elapsed for the request, and this time is the same time that is reported in the console log output (<a class="bug">bug 601126</a>).</p>
+    
+    <h3>Object Inspector</h3>
+    <div class="image">
+      <img src="images/ObjectInspector.png">
+      <div>Object Inspector</div>
+    </div>
+    
+    <h2>Command Line Helpers</h2>
+    <p>The JavaScript command line includes a few built-in helper functions that make life easier for people working with the page:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Function name</th>
+          <th>What it does</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>$</td>
+          <td>Takes a string and looks up that string as an ID of a DOM node (shortcut for document.getElementById)</td>
+        </tr>
+        <tr>
+          <td>$$</td>
+          <td>Takes a string in CSS selector format and returns a list of DOM nodes that match (shortcut for document.querySelectorAll)</td>
+        </tr>
+        <tr>
+          <td>keys</td>
+          <td>Takes an object and returns the list of keys (property names) on that object (shortcut for Object.keys)</td>
+        </tr>
+        <tr>
+          <td>values</td>
+          <td>Companion to keys()... this one returns the values.</td>
+        </tr>
+        <tr>
+          <td>clear</td>
+          <td>Clears the console output area</td>
+        </tr>
+        <tr>
+          <td>inspect</td>
+          <td>Opens the object inspector on the passed in object</td>
+        </tr>
+        <tr>
+          <td>pprint</td>
+          <td>Formats the given value in a readable way (most useful for objects and arrays)</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2>Error Console</h2>
+    <ul>
+      <li>Content errors are not displayed in the Error Console (since they are tied to the individual content windows, these errors should only be in the Web Console) <a class="bug">bug 593540</a></li>
+      <li><span class="todo">Do we provide any UI to get to the traditional error console?</span></li>
+      <li><span class="todo">Single pref/command line switch to enable developer stuff?</span> <a class="bug">bug 599292</a></li>
+    </ul>
+  </body>
+</html>
