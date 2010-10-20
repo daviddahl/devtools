@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
     <title>Web Console in Firefox 4</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script>
@@ -19,16 +20,55 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console</h1>
-    <p>kdangoor@mozilla.com, October 20, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, October 20, 2010</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document describes some of the details of the Web Console feature. Unlike most specs, this spec is being written near the end of development. It will be used to help QA and end-user documentation efforts and to visualize the work that remains.</p>
-    <p>The best background on how to use the Web Console is in my <a href="http://www.blueskyonmars.com/2010/09/01/introducing-the-web-console/">tutorial blog post</a>.</p>
+    <p>A narrative background on how to use the Web Console is in my <a href="http://www.blueskyonmars.com/2010/09/01/introducing-the-web-console/">tutorial blog post</a>.</p>
+    <p>If you find any errors in this document, please <a href="http://scr.im/kdangoor">email me</a> or, better yet, <a href="http://github.com/mozilla/devtools">fork this project on GitHub</a>.
+    Make sure you're working in the gh-pages branch.</p>
+    
+    <h2>Basic Feature Description</h2>
+    <div class="image">
+      <img src="images/TheConsole.png">
+      <div>Web Console, 10/1</div>
+    </div>
+
+    <p>The Web Console provides three important core capabilities:</p>
+    <ul>
+      <li>Log output that helps web developers see what is happening in their pages.</li>
+      <li>A command line allows developers to interactively work with the objects on their pages. It's also a handy calculator.</li>
+      <li>A <code>console</code> object that is available to JavaScript applications on the web</li>
+    </ul>
+    
+    <h2>Opening the Web Console</h2>
+    
+    <table>
+      <thead>
+        <th>Platform</th><th>Menu Item</th><th>Keyboard</th>
+      </thead>
+      <tbody>
+        <tr><td><span class="todo">Windows</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>Mac</td><td>Tools → Web Console</td><td>cmd+shift+K</td></tr>
+        <tr><td><span class="todo">Linux</span></td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
     
     <h2>Logging Functionality</h2>
     
+    <h3>What is Logged</h3>
+    
+    <p>The Web Console displays several kinds of log output:</p>
+    <ul>
+      <li>Net – network (and file) activity</li>
+      <li>CSS – parsing problems with CSS on the page</li>
+      <li>JS – JavaScript errors and warnings</li>
+      <li>Developer – messages logged in website JavaScript via the <code>console</code> object</li>
+    </ul>
+    
+    <p>Some of the log output is logged at different "levels". This helps developers to zero in on the kinds of messages they're looking for.</p>
+    
     <h3>Messages Before the Console is Opened</h3>
-    <p>The Error Console and the Chrome's console both have the ability to display messages that
-      were logged before the console was opened. The Web Console should also display messages that were logged before the console was opened. (bugs <a class="bug">568629</a>, <a class="bug">587734</a> and <a class="bug">601260</a> apply here.)</p>
+    <p>The Web Console displays messages that were logged before the console was opened. (Not yet – bugs <a class="bug">568629</a>, <a class="bug">587734</a> and <a class="bug">601260</a> apply here.)</p>
     
     <h3>Keep Track of file:// Loading</h3>
     <p>When opening a page over the network, you can see which resources where requested. When loading from a local file, you should see similar log entries displayed for loaded resources. The entries displayed for local resources will not be clickable (because there's no HTTP request metadata to go with the loading of that resource). This is <a class="bug">bug 595223</a>.</p>
@@ -51,10 +91,6 @@
     <p>CSS and JavaScript errors and warnings are logged through the same mechanism and using the same levels as window.console messages. This allows users to filter the warnings and errors. <a class="bug">bug 601177</a></p>
     
     <h2>UI Features</h2>
-    <div class="image">
-      <img src="images/TheConsole.png">
-      <div>Web Console, 10/1</div>
-    </div>
     
     <div class="image">
       <img src="images/ToolbarAndColorCoding.png">
