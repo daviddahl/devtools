@@ -6,15 +6,18 @@
   </head>
   <body>
     <h1>Mozilla Developer Tools Q4</h1>
-    <p>Kevin Dangoor, October 14, 2010</p>
-    <p>For Mozilla's developer tools group, the July to September quarter (Q3) of 2010 was a time of very quickly getting up to speed and working to land something new in Firefox 4, which had already started down the track of public beta. That work is wrapping up soon, and in the October to December quarter (Q4), we're turning our attention to what's next.</p>
+    <p>Kevin Dangoor, October 28, 2010</p>
+    <p>For Mozilla's developer tools group, the July to September quarter (Q3) of 2010 was a time of very quickly getting up to speed and working to land something new in Firefox 4, which had already started down the track of public beta. That work is wrapping up soon, and in the October to December quarter (Q4), we're starting to turn our attention to what's next.</p>
     <p>Nothing here is written in stone. We're an open organization, and this is out for public commentary. Think we should do something different? <a href="https://lists.mozilla.org/listinfo/dev-apps-firefox">Let us know!</a>. Don't feel like signing up for a mailing list? You can email me directly: <a href="http://scr.im/kdangoor">k...@m...a.com</a>.</p>
+    
+    <h2>Finishing up Firefox 4</h2>
+    <p>While the most interesting part of this document is "what do we do next?", I want to emphasize the most important work we have for the quarter: finishing up Firefox 4. We need to clear our list of Firefox 4 bugs for the Web Console and help ensure that there's a compatible Firebug release when Firefox 4 comes out.</p>
     
     <h2>Electrolysis, devtools APIs and keeping Firebug running</h2>
     <p>Since devtools are designed to help developers with their web content, they universally are going to have code that accesses content and generally puts up some kind of user interface. The <a href="https://wiki.mozilla.org/Electrolysis">electrolysis</a> (e10s) work will break a good bit of this code, making calls that used to be synchronous now asynchronous. Firebug will be broken. The Web Console will be broken. And so on...</p>
     <p>If we build a new set of APIs that is geared toward developer tools, we can plan for the coming of e10s today. With the right planning, e10s will just mean rewiring what's <em>behind</em> some of those APIs, requiring no changes to the developer tools themselves. Creating new APIs also gives us a chance to put together a coherent interface that makes it much easier for web developers to create new tools for Firefox.</p>
     <p>An e10s-ready API is vitally important for Firebug, which is a large project. By starting work on these APIs today and building them out with everything Firebug needs, we can help get Firebug running atop of an e10s base.</p>
-    <p>The Firebug project members have a great deal of experience in building web developer tools in JavaScript and their input and assistance on the new APIs will be invaluable.</p>
+    <p>The Firebug project members have a great deal of experience in building web developer tools in JavaScript and their input and assistance on the new APIs will be invaluable. In fact, the Firebug project has already begun work designing a "browser tools interface" which will have features very similar to the features we would need in a developer tools SDK.</p>
     <p>Designing and building a "devtools SDK" that presents these APIs is going to take more time than just this quarter. But, we plan to kick this off during the quarter.</p>
     
     <h2>Integrated Developer Tools</h2>
@@ -35,7 +38,7 @@
       <li>Plugins also allow the editor to be tailored for different application needs (for example Addons Builder vs. Inspector)</li>
       <li>Skywriter is designed in a way that makes it possible to operate with any kind of web server, in a desktop (XULRunner) environment or with a custom server that provides seamless sharing of plugins with the client</li>
     </ul>
-    <p>A goal for Q4 is to come up with an overall plan for the project. In general, we need to ensure that we have access to a high-quality, extensible editor. We have also started talking with Ajax.org about sharing code between Skywriter and their <a href="http://github.com/ajaxorg/editor">Cloud9 code editor</a>.</p>
+    <p>A goal for Q4 is to come up with an overall plan for the project. In general, we need to ensure that we have access to a high-quality, extensible editor. We have started working with Ajax.org to share code between Skywriter and their <a href="http://github.com/ajaxorg/editor">Cloud9 code editor</a>.</p>
 
     <h2>Bringing developer tools builders together</h2>
     <p>Developer tools cater to a different audience with different skills and needs than Firefox as a whole and we should work to create a community of web developers who wish to <em>own</em> their tools. These developers will feel empowered to not just complain that "this tool doesn't handle my situation" and instead expand the tool to help them out.</p>
@@ -50,6 +53,7 @@
     <p>New, documented APIs in the Jetpack style for tasks like debugging, profiling and inspecting page content will give tools creators a stable base to rely on. Firebug's developers have had to dig deep into Firefox in order to create Firebug and have run into trouble as the only users of various APIs. The new APIs will make it easier for web developers to experiment with new developer tool interactions without climbing a steep learning curve. As previously mentioned, these APIs will also shield developers from the changes coming with e10s.</p>
     <p>By building our own developer tools with these APIs, we will have full-featured examples that we can point to as people are learning the new APIs. We'll also be inviting a broad set of developers to join us in building some awesome tools for the web. Building Firefox should not be a prerequisite to helping make the Inspector the best way to track down trouble with page designs.</p>
     <p>We should go where many leading edge web developers are. By putting our source code up on GitHub, we will put our work in a familiar place where people are used to working with the source code provided by others. The tools and social network at GitHub make it easy for developers to freely collaborate with one another. Jetpack itself <a href="http://groups.google.com/group/mozilla-labs-jetpack/msg/b591c409c4d502e9">is planning a move to GitHub</a>, so we won't be alone in making this move.</p>
+    <p>When the time comes that we decide to ship some collection of the tools we build with Firefox directly, these tools  will be migrated from GitHub into mozilla-central with the rest of Firefox. Our intention is to leave the code structured as a Jetpack, and we need to investigate exactly how that will work. Tools that we are not shipping with Firefox will remain on GitHub, similarly to how Labs projects are handled today.</p>
     <p>In Q4, we plan to start work on the devtools APIs for Jetpack and the updated Inspector tool on GitHub.</p>
     
     
@@ -67,7 +71,6 @@
     <p>In trying to create features that cater to the needs and skills of developers and to make it as easy as possible for those developers to join in on creating the best tools around, we're consciously doing some things that are different from what Mozilla has traditionally done. We haven't encountered anything that makes us think our plan is unworkable, but we do have some open questions to resolve.</p>
     <ul>
       <li>Jetpack is still new and not yet fully stable. How much trouble will that cause us?</li>
-      <li>How will GitHub integrate with Bugzilla and Mozilla's automated testing infrastructure? (Others are exploring this as well right now).</li>
       <li>For tools that we ultimately do ship with Firefox, how will we incorporate them into the product?</li>
     </ul>
     
