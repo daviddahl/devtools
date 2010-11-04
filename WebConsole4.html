@@ -5,6 +5,15 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script>
       $(document).ready(function() {
+        var counts = {
+          bugs: 0,
+          commit: 0,
+          waiting: 0,
+          review: 0,
+          patch: 0,
+          test: 0,
+          blocker: 0
+        };
         $(".bug").each(function(index, elem) {
           var bugNumber = elem.innerHTML;
           var lastSpace = bugNumber.lastIndexOf(" ");
@@ -13,201 +22,205 @@
           }
           elem.setAttribute("href", "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugNumber);
           elem.setAttribute("target", "_blank");
+          var classlist = elem.classList;
+          counts.bugs++;
+          if (classlist.contains("commit")) {
+            counts.commit++;
+          }
+          if (classlist.contains("waiting")) {
+            counts.waiting++;
+          }
+          if (classlist.contains("review")) {
+            counts.review++;
+          }
+          if (classlist.contains("patch")) {
+            counts.patch++;
+          }
+          if (classlist.contains("blocker")) {
+            counts.blocker++;
+          }
+          if (classlist.contains("test")) {
+            counts.test++;
+          }
         });
+        for (var key in counts) {
+          $('#counts_' + key).html(counts[key]);
+        }
       });
     </script>
     <link type="text/css" rel="stylesheet" href="styles.css">
+    <style>
+      .bug {
+        color: #c22;
+      }
+      
+      .blocker {
+        color: #c22;
+        font-weight: bold;
+      }
+      
+      .patch, .review, .waiting {
+        color: #272;
+      }
+      
+      .commit {
+        color: #2c2;
+      }
+    </style>
   </head>
   <body>
-    <h1>Firefox 4 Web Console</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, October 20, 2010</p>
+    <h1>Firefox 4 Web Console Completion Status</h1>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 4, 2010</p>
     <h2>Overview</h2>
-    <p>The Web Console feature in Firefox 4 is an important tool for developers. This document describes some of the details of the Web Console feature. Unlike most specs, this spec is being written near the end of development. It will be used to help QA and end-user documentation efforts and to visualize the work that remains.</p>
-    <p>A narrative background on how to use the Web Console is in my <a href="http://www.blueskyonmars.com/2010/09/01/introducing-the-web-console/">tutorial blog post</a>.</p>
-    <p>If you find any errors in this document, please <a href="http://scr.im/kdangoor">email me</a> or, better yet, <a href="http://github.com/mozilla/devtools">fork this project on GitHub</a>.
+    <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
+    <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
+    <p>If you find any errors in this document, please <a href="http://scr.im/kdangoor">email me</a> or <a href="http://github.com/mozilla/devtools">fork this project on GitHub</a>.
     Make sure you're working in the gh-pages branch.</p>
+    <p>The numerical picture of Web Console bugs:</p>
+    <table>
+      <tbody>
+        <tr>
+          <th>Total bugs in plan for Firefox 4</th><td id="counts_bugs"></td>
+        </tr>
+        <tr>
+          <th>Blockers (in the total)</th><td id="counts_blocker"></td>
+        </tr>
+        <tr>
+          <th>Ready to commit!</th><td id="counts_commit"></td>
+        </tr>
+        <tr>
+          <th>Up for review</th><td id="counts_review"></td>
+        </tr>
+        <tr>
+          <th>Has a patch</th><td id="counts_patch"></td>
+        </tr>
+        <tr>
+          <th>Fixed by other bugs</th><td id="counts_waiting"></td>
+        </tr>
+        <tr>
+          <th>test-only fixes</th><td id="counts_test"></td>
+        </tr>
+      </tbody>
+    </table>
     
-    <h2>Basic Feature Description</h2>
+    <p>Bug key:</p>
+    <ul>
+      <li class="blocker">Blocker without patches</li>
+      <li class="commit">Ready to commit</li>
+      <li class="review">Progressing</li>
+      <li style="color: #c22">Other bug without patches</li>
+    </ul>
+    
+    <h2>Visual Polish</h2>
+    <p>The Web Console is useful today, but visual changes will go a long way toward making the Web Console look great and be even more usable.</p>
     <div class="image">
-      <img src="images/TheConsole.png">
+      <img src="images/TheConsole.png" width="800">
       <div>Web Console, 10/1</div>
     </div>
-
-    <p>The Web Console provides three important core capabilities:</p>
-    <ul>
-      <li>Log output that helps web developers see what is happening in their pages.</li>
-      <li>A command line allows developers to interactively work with the objects on their pages. It's also a handy calculator.</li>
-      <li>A <code>console</code> object that is available to JavaScript applications on the web</li>
-    </ul>
-    
-    <h2>Opening the Web Console</h2>
-    
-    <table>
-      <thead>
-        <th>Platform</th><th>Menu Item</th><th>Keyboard</th>
-      </thead>
-      <tbody>
-        <tr><td><span class="todo">Windows</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-        <tr><td>Mac</td><td>Tools → Web Console</td><td>cmd+shift+K</td></tr>
-        <tr><td><span class="todo">Linux</span></td><td>&nbsp;</td><td>&nbsp;</td></tr>
-      </tbody>
-    </table>
-    
-    <h2>Logging Functionality</h2>
-    
-    <h3>What is Logged</h3>
-    
-    <p>The Web Console displays several kinds of log output:</p>
-    <ul>
-      <li>Net – network (and file) activity</li>
-      <li>CSS – parsing problems with CSS on the page</li>
-      <li>JS – JavaScript errors and warnings</li>
-      <li>Developer – messages logged in website JavaScript via the <code>console</code> object</li>
-    </ul>
-    
-    <p>Some of the log output is logged at different "levels". This helps developers to zero in on the kinds of messages they're looking for.</p>
-    
-    <h3>Messages Before the Console is Opened</h3>
-    <p>The Web Console displays messages that were logged before the console was opened. (Not yet – bugs <a class="bug">568629</a>, <a class="bug">587734</a> and <a class="bug">601260</a> apply here.)</p>
-    
-    <h3>Keep Track of file:// Loading</h3>
-    <p>When opening a page over the network, you can see which resources where requested. When loading from a local file, you should see similar log entries displayed for loaded resources. The entries displayed for local resources will not be clickable (because there's no HTTP request metadata to go with the loading of that resource). This is <a class="bug">bug 595223</a>.</p>
-    
-    <h3>Request/response Body Logging</h3>
-    <p>The logging of request and response bodies can consume a lot of memory and slow the browser down. This logging can be toggled on and off, and is limited to 1MB (<a class="bug">bug 598851</a> adds the 1MB limit). <a class="bug">bug 602572</a> is also relevant.</p>
-    
-    <h3>Private Browsing</h3>
-    <p>When the user transitions into or out of Private Browsing mode, data that is cached within the console service should be cleared. <a class="bug">bug 602199</a></p>
-    
-    <h3>How Messages Appear in the Log</h3>
-    <p>In the log output, several kinds of messages can appear:</p>
-    <ul>
-      <li>Network messages</li>
-      <li>CSS errors and warnings</li>
-      <li>JavaScript errors and warnings</li>
-      <li>Messages logged by user code using the window.console object at the error, warn, info and log levels</li>
-    </ul>
-    
-    <p>CSS and JavaScript errors and warnings are logged through the same mechanism and using the same levels as window.console messages. This allows users to filter the warnings and errors. <a class="bug">bug 601177</a></p>
-    
-    <h2>UI Features</h2>
-    
     <div class="image">
-      <img src="images/ToolbarAndColorCoding.png">
-      <div>Proposed toolbar button style and message color coding (note: clear button/search box missing)</div>
+      <img src="https://bug605621.bugzilla.mozilla.org/attachment.cgi?id=487101" width="800">
+      <div>Work-in-progress screenshot, 10/29</div>
     </div>
-    
-    <h3>Web Console Chrome</h3>
-    <ul>
-      <li>The styles applied by Personas should have no impact on the Web Console's appearance (<a class="bug">bug 601196).</a></li>
-    
-      <li>Unchecking the Network, CSS and JS buttons will filter out those messages from the output. (<a class="bug">bug 589162</a> for CSS filtering not working)</li>
-      
-      <li>Unchecking the Warnings button will filter out all warnings, whether they came from console.warn or are JavaScript or CSS warnings. <a class="bug">601177</a>.</li>
-    
-      <li>Clearing the console should be easy and discoverable (<a class="bug">bug 601179</a>).</li>
-      <li>UI elements should be aligned cleanly (<a class="bug">bug 598519</a>)</li>
-    </ul>
-    
-    <h3>Log output</h3>
-    
-    <ul>
-      <li>Log output is displayed in a modern monospaced font <a class="bug">574103</a>.</li>
-      <li>Timestamp and message type (Network, Exception, CSS Warning?) are visibly distinct from the remainder of the log output and consistent from message type to message type. Bugs <a class="bug">601671</a> and <a class="bug">601672</a>.</li>
-      <li>Network log entries have a clickable area (<span class="todo">where?</span>) to display detailed information about the request. <a class="bug">601675</a></li>
-      <li>A dividing line should appear between requests (or periodically, depending on implementation feasibility) <a class="bug">bug 601464</a></li>
-      <li>Filtering the log output should not change the scrolling behavior as new entries arrive (<a class="bug">bug 597460</a>).</li>
-    
-      <li>JavaScript and CSS errors should link to a view of the source file when an error occurs (<a class="bug">Bug 588379</a>).</li>
-    
-      <li>Only a standard mouse click (not right click, etc.) opens the network inspector (<a class="bug">bug 594477</a>) or object inspector.</li>
-      <li>Empty groupings of elements should be collapsed to avoid a string of dividers appearing (<a class="bug">bug 599240</a>)</li>
-      <li>Logged evaluated JavaScript expressions use the same &gt;-like glyph as the command line itself, not an actual &gt; <a class="bug">bug 601681</a>.</li>
-    
-      <li>Clicking on a primitive value should not open the Object Inspector and primitive values should not have styling that appears clickable (<a class="bug">bug 598357</a>).
-        <div class="image">
-          <img src="images/ObjectInspectorForPrimitive.png">
-          <div>Object Inspector looking at a primitive</div>
-        </div>
-      </li>
-    </ul>
-    
-    
-    <h3>Command Line</h3>
-    <div class="image">
-      <img src="images/JSCommandLine.png">
-      <div>JavaScript expression evaluation</div>
-    </div>
-    <ul>
-      <li>When you enter an expression at the command line, the result of that expression should be scrolled into view (<a class="bug">bug 601352</a>).</li>
-      <li>Proposed completion text should be visually distinct from the user-typed text <a class="bug">bug 601183</a></li>
-      <li>JavaScript is evaluated in a sandbox that has access to the page's window object but does not pollute the page namespace by default.</li>
-      <li>Any standard JavaScript expression can be evaluated and return the result the user expects (<a class="bug">bug 599940</a> for instanceof problem)</li>
-    </ul>
-    
-    <h3>Network Inspector</h3>
     <div class="image">
       <img src="images/NetworkInspector.png">
-      <div>Network inspector</div>
+      <div>Network Inspector, 10/1</div>
     </div>
+    <div class="image">
+      <img src="https://bug603625.bugzilla.mozilla.org/attachment.cgi?id=488169">
+      <div>Network Inspector with bug 603625 patch applied</div>
+    </div>
+    </body>
+    <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
+    <p>Open visual polish bugs:</p>
     <ul>
-      <li>Clean up/align headings? <span class="todo">bug?</span></li>
+      <li><a class="bug waiting blocker">bug 599498</a> Web Console CSS aesthetics</li>
+      <li><a class="bug review blocker">bug 601667</a> Web Console toolbar styling</li>
+      <li><a class="bug">bug 605621</a> Web Console output box should be reskinned</li>
+      <li><a class="bug waiting blocker">bug 601196</a> Console styling busted by personas (waiting on bug 601667)</li>
+      <li><a class="bug review">bug 601183</a> Safari/Chrome/Google-style completion for the console</li>
+      <li><a class="bug commit">bug 596315</a> Animate opening and closing of the console</li>
+      <li><a class="bug patch">bug 603625</a> Network panel heading realignment</li>
+      <li><a class="bug review blocker">bug 598357</a> change command line output to be easier to understand</li>
+      <li><a class="bug patch blocker">bug 588379</a> Errors in the Web Console should link to the source file</li>
+      <li><a class="bug commit">bug 607163</a> webConsole.css should be in browser.xul</li>
+      <li><a class="bug">bug 609372</a> better icons for the web console</li>
+      <li><a class="bug patch">bug 601672</a> Improve display of logging category</li>
+      <li><a class="bug waiting blocker">bug 601179</a> Clearing web console is rocket science (waiting on bug 601667)</li>
+      <li><a class="bug waiting">bug 598519</a> Web console close button pressed state is one pixel off (vertically and horizontally) (waiting on bug 601667)</li>
     </ul>
     
-    <p>The popup Network Inspector panel displays the time elapsed for the request, and this time is the same time that is reported in the console log output (<a class="bug">bug 601126</a>).</p>
+    <h2>Logging Functionality</h2>
+    <p>There are two big areas in which we are improving message logging. This improved logging will also help Firebug.</p>
+    <ul>
+      <li>Many more messages will be associated as they are created directly with the window/tab for which they are relevant. The Web Console and Firebug have been using heuristics for these to date, rather than explicit data.</li>
+      <li>The lazy console service will allow logging of messages before the console is opened.</li>
+    </ul>
+    <p>Open logging functionality bugs:</p>
+    <ul>
+      <li><a class="bug">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
+      <li><a class="bug review blocker">bug 606498</a> log messages with associated window using nsiScriptError2</li>
+      <li><a class="bug review blocker">bug 568629</a> Small footprint, lazy console component</li>
+      <li><a class="bug review blocker">bug 587734</a> Integrate lazy window console API into WebConsole code</li>
+      <li><a class="bug waiting blocker">bug 578353</a> Create IDL for global console service (waiting on bug 568629)</li>
+      <li><a class="bug commit blocker">bug 597136</a> Remove the HUDService onerror event handler</li>
+      <li><a class="bug commit blocker">bug 597756</a> Fx 4 Web Console fails to show javascript errors if a tab is closed and the same document is then re-opened in a new tab</li>
+      <li><a class="bug review blocker">bug 608358</a> inspect() and pprint() console helper functions not working on window object</li>
+      <li><a class="bug review blocker">bug 595223</a> log loading from file:// urls</li>
+      <li><a class="bug review blocker">bug 601177</a> log errors and warnings at the proper levels for sane filtering</li>
+      <li><a class="bug blocker">bug 601260</a> Cache all messages in the ConsoleStorageService once all web console observers are running</li>
+      <li><a class="bug waiting blocker">bug 605241</a> JavaScript strict warnings from external scripts do not show in the Web Console (waiting on bug 597136)</li>
+      <li><a class="bug waiting">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
+    </ul>
     
-    <h3>Object Inspector</h3>
-    <div class="image">
-      <img src="images/ObjectInspector.png">
-      <div>Object Inspector</div>
-    </div>
+    <h2>JavaScript Console</h2>
+    <p>These are improvements we want to make to the JavaScript command line:</p>
+    <ul>
+      <li><a class="bug review">bug 605419</a> Provide a help command</li>
+    </ul>
     
-    <h2>Command Line Helpers</h2>
-    <p>The JavaScript command line includes a few built-in helper functions that make life easier for people working with the page:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Function name</th>
-          <th>What it does</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>$</td>
-          <td>Takes a string and looks up that string as an ID of a DOM node (shortcut for document.getElementById)</td>
-        </tr>
-        <tr>
-          <td>$$</td>
-          <td>Takes a string in CSS selector format and returns a list of DOM nodes that match (shortcut for document.querySelectorAll)</td>
-        </tr>
-        <tr>
-          <td>keys</td>
-          <td>Takes an object and returns the list of keys (property names) on that object (shortcut for Object.keys)</td>
-        </tr>
-        <tr>
-          <td>values</td>
-          <td>Companion to keys()... this one returns the values.</td>
-        </tr>
-        <tr>
-          <td>clear</td>
-          <td>Clears the console output area</td>
-        </tr>
-        <tr>
-          <td>inspect</td>
-          <td>Opens the object inspector on the passed in object</td>
-        </tr>
-        <tr>
-          <td>pprint</td>
-          <td>Formats the given value in a readable way (most useful for objects and arrays)</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>Other bugs</h2>
+    <p>Yep, there are some other random things we're fixing up as well.</p>
+    <ul>
+      <li><a class="bug review">bug 605634</a> Opening two Web Consoles on the same URI causes errors</li>
+      <li><a class="bug commit blocker">bug 601909</a> Persist console height</li>
+      <li><a class="bug commit blocker">bug 597460</a> Web Console scrolls to top when (at least) a filtered network event occurs</li>
+      <li><a class="bug commit blocker">bug 600183</a> if someone opens another
+      tab while receiving network data in the first tab, the results logged in the
+      console of that first tab will use things like character set from the *new*
+      tab.</li>
+      <li><a class="bug blocker">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector</li>
+      <li><a class="bug review blocker">bug 592442</a> Completion throws error if closing more bracket are closed then opened</li>
+      <li><a class="bug waiting blocker">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (waiting on bugs 605241 and 587734)</li>
+      <li><a class="bug review blocker">bug 597151</a> The HUDConsoleObserver is never removed</li>
+      <li><a class="bug review blocker">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information</li>
+      <li><a class="bug patch blocker">bug 602572</a> Log request and response bodies checkbox issues in Web Console</li>
+      <li><a class="bug waiting blocker">bug 595889</a> Web Console does not report exceptions if multiple windows are opened</li>
+      <li><a class="bug waiting blocker">bug 603005</a> HUDService should avoid the use of DOM mutation event listeners (waiting on bug 605621)</li>
+      <li><a class="bug blocker">bug 606055</a> Memory leaks on google.com with the Web Console open</li>
+      <li><a class="bug waiting">bug 605473</a> Web console logging throws an error if you reopen the console</li>
+      <li><a class="bug">bug 568661</a> make sure the console initiates with about:blank pages</li>
+    </ul>
     
     <h2>Error Console</h2>
+    <p>Our old friend the Error Console is being hidden away, since most web developers will get everything they need out of the Web Console. We have a little bit of work left to do to hide the error console.</p>
     <ul>
-      <li>Content errors are not displayed in the Error Console (since they are tied to the individual content windows, these errors should only be in the Web Console) <a class="bug">bug 593540</a></li>
-      <li><span class="todo">Do we provide any UI to get to the traditional error console?</span></li>
-      <li><span class="todo">Single pref/command line switch to enable developer stuff?</span> <a class="bug">bug 599292</a></li>
+      <li><a class="bug commit blocker">bug 593540</a> Don't display content errors in the Error Console</li>
+      <li><a class="bug blocker">bug 601260</a> disable Error Console again once Web Console improvements land</li>
+    </ul>
+    
+    <h2>Cleanup/Tests</h2>
+    <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
+    <ul>
+      <li><a class="bug">bug 603001</a> .hud-filtered-by-type .hud-filtered-by-string style rules belong in content</li>
+      <li><a class="bug">bug 592222</a>Add API getHUDStrongReference to HUDService</li>
+      <li><a class="bug test patch blocker">bug 594145</a> Intermittent failures in browser_HUDServiceTestsAll.js</li>
+      <li><a class="bug test patch">bug 601006</a> Re-enable API enumeration test</li>
+      <li><a class="bug test patch">bug 602024</a> mixed licensing in HUDService.jsm is confusing</li>
+      <li><a class="bug test patch">bug 594741</a> Web Console stress test</li>
+      <li><a class="bug test patch">bug 605351</a> fix and re-enable browser_webconsole_bug_593003_iframe_wrong_hud.js</li>
+      <li><a class="bug test">bug 607325</a> Test browser_webconsole_bug_594477_clickable_output.js always fails for me</li>
+      <li><a class="bug test waiting">bug 600095</a> Followup test fixes after lazy console lands (waiting on bug 587734)</li>
+      <li><a class="bug test">bug 596080</a> testInputFocus failures on Windows</li>
     </ul>
   </body>
 </html>
