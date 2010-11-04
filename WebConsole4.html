@@ -46,6 +46,7 @@
         for (var key in counts) {
           $('#counts_' + key).html(counts[key]);
         }
+        $("#counts_notstarted").html(counts.bugs - counts.review - counts.commit - counts.patch - counts.waiting);
       });
     </script>
     <link type="text/css" rel="stylesheet" href="styles.css">
@@ -66,6 +67,10 @@
       .commit {
         color: #2c2;
       }
+      
+      #counts_table td {
+        text-align: right;
+      }
     </style>
   </head>
   <body>
@@ -77,7 +82,7 @@
     <p>If you find any errors in this document, please <a href="http://scr.im/kdangoor">email me</a> or <a href="http://github.com/mozilla/devtools">fork this project on GitHub</a>.
     Make sure you're working in the gh-pages branch.</p>
     <p>The numerical picture of Web Console bugs:</p>
-    <table>
+    <table id="counts_table">
       <tbody>
         <tr>
           <th>Total bugs in plan for Firefox 4</th><td id="counts_bugs"></td>
@@ -85,6 +90,8 @@
         <tr>
           <th>Blockers (in the total)</th><td id="counts_blocker"></td>
         </tr>
+        <tr>
+          <th>Bugs that are not yet started</th><td id="counts_notstarted"></td>
         <tr>
           <th>Ready to commit!</th><td id="counts_commit"></td>
         </tr>
@@ -96,9 +103,6 @@
         </tr>
         <tr>
           <th>Fixed by other bugs</th><td id="counts_waiting"></td>
-        </tr>
-        <tr>
-          <th>test-only fixes</th><td id="counts_test"></td>
         </tr>
       </tbody>
     </table>
