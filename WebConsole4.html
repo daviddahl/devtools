@@ -161,10 +161,12 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
+      <li><a class="bug">bug 609890</a> display cached console messages when the user opens the console</li>
       <li><a class="bug">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
       <li><a class="bug review blocker">bug 606498</a> log messages with associated window using nsiScriptError2</li>
       <li><a class="bug review blocker">bug 568629</a> Small footprint, lazy console component</li>
       <li><a class="bug review blocker">bug 587734</a> Integrate lazy window console API into WebConsole code</li>
+      <li><a class="bug">bug 609955</a> Remove IDL from ConsoleAPI component</li>
       <li><a class="bug waiting blocker">bug 578353</a> Create IDL for global console service (waiting on bug 568629)</li>
       <li><a class="bug commit blocker">bug 597136</a> Remove the HUDService onerror event handler</li>
       <li><a class="bug commit blocker">bug 597756</a> Fx 4 Web Console fails to show javascript errors if a tab is closed and the same document is then re-opened in a new tab</li>
@@ -185,6 +187,7 @@
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
+      <li><a class="bug">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server</li>
       <li><a class="bug review">bug 605634</a> Opening two Web Consoles on the same URI causes errors</li>
       <li><a class="bug commit blocker">bug 601909</a> Persist console height</li>
       <li><a class="bug commit blocker">bug 597460</a> Web Console scrolls to top when (at least) a filtered network event occurs</li>
@@ -195,7 +198,7 @@
       <li><a class="bug blocker">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector</li>
       <li><a class="bug review blocker">bug 592442</a> Completion throws error if closing more bracket are closed then opened</li>
       <li><a class="bug waiting blocker">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (waiting on bugs 605241 and 587734)</li>
-      <li><a class="bug review blocker">bug 597151</a> The HUDConsoleObserver is never removed</li>
+      <li><a class="bug commit blocker">bug 597151</a> The HUDConsoleObserver is never removed</li>
       <li><a class="bug review blocker">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information</li>
       <li><a class="bug patch blocker">bug 602572</a> Log request and response bodies checkbox issues in Web Console</li>
       <li><a class="bug waiting blocker">bug 595889</a> Web Console does not report exceptions if multiple windows are opened</li>
@@ -203,6 +206,9 @@
       <li><a class="bug waiting blocker">bug 606055</a> Memory leaks on google.com with the Web Console open (waiting on bug 597151)</li>
       <li><a class="bug waiting">bug 605473</a> Web console logging throws an error if you reopen the console</li>
       <li><a class="bug">bug 568661</a> make sure the console initiates with about:blank pages</li>
+      <li><a class="bug">bug 610337</a> Console keeps throwing same CSS parser warnings repeatedly when loading mozilla.org in an iframe</li>
+      <li><a class="bug">bug 609952</a> Move sendToWebConsole functionality from ConsoleAPIObserver to HUDService</li>
+      <li><a class="bug">bug 609950</a> Make sure CAO_observe use getHudIdByWindow(getWindowByWindowId(ID))</li>
     </ul>
     
     <h2>Error Console</h2>
