@@ -139,14 +139,12 @@
     <ul>
       <li><a class="bug waiting blocker">bug 599498</a> Web Console CSS aesthetics</li>
       <li><a class="bug review blocker">bug 601667</a> Web Console toolbar styling</li>
-      <li><a class="bug">bug 605621</a> Web Console output box should be reskinned</li>
+      <li><a class="bug patch">bug 605621</a> Web Console output box should be reskinned</li>
       <li><a class="bug waiting blocker">bug 601196</a> Console styling busted by personas (waiting on bug 601667)</li>
       <li><a class="bug review">bug 601183</a> Safari/Chrome/Google-style completion for the console</li>
-      <li><a class="bug commit">bug 596315</a> Animate opening and closing of the console</li>
       <li><a class="bug patch">bug 603625</a> Network panel heading realignment</li>
       <li><a class="bug review blocker">bug 598357</a> change command line output to be easier to understand</li>
       <li><a class="bug patch blocker">bug 588379</a> Errors in the Web Console should link to the source file</li>
-      <li><a class="bug commit">bug 607163</a> webConsole.css should be in browser.xul</li>
       <li><a class="bug">bug 609372</a> better icons for the web console</li>
       <li><a class="bug patch">bug 601672</a> Improve display of logging category</li>
       <li><a class="bug waiting blocker">bug 601179</a> Clearing web console is rocket science (waiting on bug 601667)</li>
@@ -180,7 +178,6 @@
     <p>These are improvements we want to make to the JavaScript command line:</p>
     <ul>
       <li><a class="bug review">bug 605419</a> Provide a help command</li>
-      <li><a class="bug review blocker">bug 608358</a> inspect() and pprint() console helper functions not working on window object</li>
     </ul>
     
     <h2>Other bugs</h2>
@@ -205,18 +202,18 @@
       <li><a class="bug waiting blocker">bug 606055</a> Memory leaks on google.com with the Web Console open (waiting on bug 597151)</li>
       <li><a class="bug waiting">bug 605473</a> Web console logging throws an error if you reopen the console</li>
       <li><a class="bug">bug 568661</a> make sure the console initiates with about:blank pages</li>
-      <li><a class="bug">bug 610337</a> Console keeps throwing same CSS parser warnings repeatedly when loading mozilla.org in an iframe</li>
       <li><a class="bug">bug 609952</a> Move sendToWebConsole functionality from ConsoleAPIObserver to HUDService</li>
       <li><a class="bug">bug 609950</a> Make sure CAO_observe use getHudIdByWindow(getWindowByWindowId(ID))</li>
       <li><a class="bug">bug 610609</a> The console's logging API is disabled after toggling fullscreen mode</li>
       <li><a class="bug">bug 603856</a> Intermittent failure in resource:///modules/HUDService.jsm</li>
+      <li><a class="bug">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
     </ul>
     
     <h2>Error Console</h2>
     <p>Our old friend the Error Console is being hidden away, since most web developers will get everything they need out of the Web Console. We have a little bit of work left to do to hide the error console.</p>
     <ul>
       <li><a class="bug commit blocker">bug 593540</a> Don't display content errors in the Error Console</li>
-      <li><a class="bug blocker">bug 601260</a> disable Error Console again once Web Console improvements land</li>
+      <li><a class="bug blocker">bug 602006</a> disable Error Console again once Web Console improvements land</li>
     </ul>
     
     <h2>Cleanup/Tests</h2>
@@ -233,6 +230,7 @@
       <li><a class="bug test">bug 596080</a> testInputFocus failures on Windows</li>
       <li><a class="bug test">bug 609723</a> Assertion in browser_webconsole_bug_597103_deactivateHUDForContext_unfocused_window.js</li>
       <li><a class="bug test">bug 609718</a> Assertion in browser_webconsole_chrome.js</li>
+      <li><a class="bug test">bug 610953</a> hudservice head.js should not declare variables or call waitForFinish</li>
     </ul>
   </body>
 </html>
