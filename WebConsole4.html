@@ -75,7 +75,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 9, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 12, 2010</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -149,6 +149,7 @@
       <li><a class="bug patch">bug 601672</a> Improve display of logging category</li>
       <li><a class="bug waiting blocker">bug 601179</a> Clearing web console is rocket science (waiting on bug 601667)</li>
       <li><a class="bug waiting">bug 598519</a> Web console close button pressed state is one pixel off (vertically and horizontally) (waiting on bug 601667)</li>
+      <li><a class="bug">bug 611440</a> Smart abbreviation for URLs in the Web Console (this would be awesome!)</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -162,10 +163,7 @@
       <li><a class="bug">bug 609890</a> display cached console messages when the user opens the console</li>
       <li><a class="bug">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
       <li><a class="bug review blocker">bug 606498</a> log messages with associated window using nsiScriptError2</li>
-      <li><a class="bug review blocker">bug 568629</a> Small footprint, lazy console component</li>
       <li><a class="bug review blocker">bug 587734</a> Integrate lazy window console API into WebConsole code</li>
-      <li><a class="bug">bug 609955</a> Remove IDL from ConsoleAPI component</li>
-      <li><a class="bug commit blocker">bug 597136</a> Remove the HUDService onerror event handler</li>
       <li><a class="bug commit blocker">bug 597756</a> Fx 4 Web Console fails to show javascript errors if a tab is closed and the same document is then re-opened in a new tab</li>
       <li><a class="bug review blocker">bug 595223</a> log loading from file:// urls</li>
       <li><a class="bug review blocker">bug 601177</a> log errors and warnings at the proper levels for sane filtering</li>
@@ -178,6 +176,7 @@
     <p>These are improvements we want to make to the JavaScript command line:</p>
     <ul>
       <li><a class="bug review">bug 605419</a> Provide a help command</li>
+      <li><a class="bug">bug 611549</a> Web Console console input box isn't localized for RTL</li>
     </ul>
     
     <h2>Other bugs</h2>
@@ -207,6 +206,7 @@
       <li><a class="bug">bug 610609</a> The console's logging API is disabled after toggling fullscreen mode</li>
       <li><a class="bug">bug 603856</a> Intermittent failure in resource:///modules/HUDService.jsm</li>
       <li><a class="bug">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
+      <li><a class="bug">bug 611600</a> Possible to get Web Console into unclosable state</li>
     </ul>
     
     <h2>Error Console</h2>
