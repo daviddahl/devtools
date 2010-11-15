@@ -115,7 +115,7 @@
       <li style="color: #c22">Other bug without patches</li>
     </ul>
     
-    <h2>Visual Polish</h2>
+    <h2>UI Polish</h2>
     <p>The Web Console is useful today, but visual changes will go a long way toward making the Web Console look great and be even more usable.</p>
     <div class="image">
       <img src="images/TheConsole.png" width="800">
@@ -135,7 +135,7 @@
     </div>
     </body>
     <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
-    <p>Open visual polish bugs:</p>
+    <p>Open UI polish bugs:</p>
     <ul>
       <li><a class="bug waiting blocker">bug 599498</a> Web Console CSS aesthetics</li>
       <li><a class="bug review blocker">bug 601667</a> Web Console toolbar styling</li>
@@ -150,6 +150,10 @@
       <li><a class="bug waiting blocker">bug 601179</a> Clearing web console is rocket science (waiting on bug 601667)</li>
       <li><a class="bug waiting">bug 598519</a> Web console close button pressed state is one pixel off (vertically and horizontally) (waiting on bug 601667)</li>
       <li><a class="bug">bug 611440</a> Smart abbreviation for URLs in the Web Console (this would be awesome!)</li>
+      <li><a class="bug">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
+      <li><a class="bug">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
+      <li><a class="bug">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
+      <li><a class="bug">bug 611851</a> Make the Web Console resize handle nicer looking on the Mac</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -170,6 +174,7 @@
       <li><a class="bug blocker">bug 601260</a> Cache all messages in the ConsoleStorageService once all web console observers are running</li>
       <li><a class="bug waiting blocker">bug 605241</a> JavaScript strict warnings from external scripts do not show in the Web Console (waiting on bug 597136)</li>
       <li><a class="bug waiting">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
+      <li><a class="bug patch">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
     </ul>
     
     <h2>JavaScript Console</h2>
@@ -182,17 +187,15 @@
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
-      <li><a class="bug patch blocker">bug 597136</a> Remove the HUDService onerror event handler and use the window ID from nsIScriptError2 messages</li>
+      <li><a class="bug commit blocker">bug 597460</a> Web Console scrolls to top when (at least) a filtered network event occurs</li>
       <li><a class="bug">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server</li>
       <li><a class="bug review">bug 605634</a> Opening two Web Consoles on the same URI causes errors</li>
       <li><a class="bug commit blocker">bug 601909</a> Persist console height</li>
-      <li><a class="bug commit blocker">bug 597460</a> Web Console scrolls to top when (at least) a filtered network event occurs</li>
       <li><a class="bug commit blocker">bug 600183</a> if someone opens another
       tab while receiving network data in the first tab, the results logged in the
       console of that first tab will use things like character set from the *new*
       tab.</li>
       <li><a class="bug blocker">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector</li>
-      <li><a class="bug review blocker">bug 592442</a> Completion throws error if closing more bracket are closed then opened</li>
       <li><a class="bug waiting blocker">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (waiting on bugs 605241 and 587734)</li>
       <li><a class="bug commit blocker">bug 597151</a> The HUDConsoleObserver is never removed</li>
       <li><a class="bug review blocker">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information</li>
@@ -201,13 +204,17 @@
       <li><a class="bug waiting blocker">bug 603005</a> HUDService should avoid the use of DOM mutation event listeners (waiting on bug 605621)</li>
       <li><a class="bug waiting blocker">bug 606055</a> Memory leaks on google.com with the Web Console open (waiting on bug 597151)</li>
       <li><a class="bug waiting">bug 605473</a> Web console logging throws an error if you reopen the console</li>
-      <li><a class="bug">bug 568661</a> make sure the console initiates with about:blank pages</li>
+      <li><a class="bug waiting">bug 568661</a> make sure the console initiates with about:blank pages</li>
       <li><a class="bug">bug 609952</a> Move sendToWebConsole functionality from ConsoleAPIObserver to HUDService</li>
       <li><a class="bug">bug 609950</a> Make sure CAO_observe use getHudIdByWindow(getWindowByWindowId(ID))</li>
       <li><a class="bug">bug 610609</a> The console's logging API is disabled after toggling fullscreen mode</li>
       <li><a class="bug">bug 603856</a> Intermittent failure in resource:///modules/HUDService.jsm</li>
       <li><a class="bug">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
-      <li><a class="bug">bug 611600</a> Possible to get Web Console into unclosable state</li>
+      <li><a class="bug waiting">bug 611600</a> Possible to get Web Console into unclosable state</li>
+      <li><a class="bug">bug 611789</a> Web Console cleanup: Remove the window registry</li>
+      <li><a class="bug">bug 612138</a> Cannot open the web console on my debug build</li>
+      <li><a class="bug">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay()</li>
+      <li><a class="bug waiting">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
     </ul>
     
     <h2>Error Console</h2>
@@ -221,14 +228,12 @@
     <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
     <ul>
       <li><a class="bug">bug 603001</a> .hud-filtered-by-type .hud-filtered-by-string style rules belong in content</li>
-      <li><a class="bug test patch blocker">bug 594145</a> Intermittent failures in browser_HUDServiceTestsAll.js</li>
       <li><a class="bug test patch">bug 601006</a> Re-enable API enumeration test</li>
       <li><a class="bug test patch">bug 602024</a> mixed licensing in HUDService.jsm is confusing</li>
       <li><a class="bug test patch">bug 594741</a> Web Console stress test</li>
       <li><a class="bug test patch">bug 605351</a> fix and re-enable browser_webconsole_bug_593003_iframe_wrong_hud.js</li>
       <li><a class="bug test">bug 607325</a> Test browser_webconsole_bug_594477_clickable_output.js always fails for me</li>
       <li><a class="bug test waiting">bug 600095</a> Followup test fixes after lazy console lands (waiting on bug 587734)</li>
-      <li><a class="bug test">bug 596080</a> testInputFocus failures on Windows</li>
       <li><a class="bug test">bug 609723</a> Assertion in browser_webconsole_bug_597103_deactivateHUDForContext_unfocused_window.js</li>
       <li><a class="bug test">bug 609718</a> Assertion in browser_webconsole_chrome.js</li>
       <li><a class="bug test">bug 610953</a> hudservice head.js should not declare variables or call waitForFinish</li>
