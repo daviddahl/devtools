@@ -154,6 +154,7 @@
       <li><a class="bug">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
       <li><a class="bug">bug 611851</a> Make the Web Console resize handle nicer looking on the Mac</li>
+      <li><a class="bug">bug 612300</a> Web Console opening and closing transition is too slow</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -164,15 +165,14 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
-      <li><a class="bug">bug 609890</a> display cached console messages when the user opens the console</li>
+      <li><a class="bug blocker">bug 609890</a> display cached console messages when the user opens the console</li>
       <li><a class="bug">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
       <li><a class="bug review blocker">bug 606498</a> log messages with associated window using nsiScriptError2</li>
       <li><a class="bug review blocker">bug 587734</a> Integrate lazy window console API into WebConsole code</li>
       <li><a class="bug commit blocker">bug 597756</a> Fx 4 Web Console fails to show javascript errors if a tab is closed and the same document is then re-opened in a new tab</li>
       <li><a class="bug review blocker">bug 595223</a> log loading from file:// urls</li>
-      <li><a class="bug review blocker">bug 601177</a> log errors and warnings at the proper levels for sane filtering</li>
+      <li><a class="bug commit blocker">bug 601177</a> log errors and warnings at the proper levels for sane filtering</li>
       <li><a class="bug blocker">bug 601260</a> Cache all messages in the ConsoleStorageService once all web console observers are running</li>
-      <li><a class="bug waiting blocker">bug 605241</a> JavaScript strict warnings from external scripts do not show in the Web Console (waiting on bug 597136)</li>
       <li><a class="bug waiting">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
       <li><a class="bug patch">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
     </ul>
@@ -181,7 +181,8 @@
     <p>These are improvements we want to make to the JavaScript command line:</p>
     <ul>
       <li><a class="bug review">bug 605419</a> Provide a help command</li>
-      <li><a class="bug">bug 611549</a> Web Console console input box isn't localized for RTL</li>
+      <li><a class="bug">bug 611549</a> Web Console console input box should be LTR even for RTL locales</li>
+      <li><a class="bug">bug 612342</a> Cross-origin windows break the JSTerm Sandbox's ability to access properties</li>
     </ul>
     
     <h2>Other bugs</h2>
@@ -207,7 +208,7 @@
       <li><a class="bug waiting">bug 568661</a> make sure the console initiates with about:blank pages</li>
       <li><a class="bug">bug 609952</a> Move sendToWebConsole functionality from ConsoleAPIObserver to HUDService</li>
       <li><a class="bug">bug 609950</a> Make sure CAO_observe use getHudIdByWindow(getWindowByWindowId(ID))</li>
-      <li><a class="bug">bug 610609</a> The console's logging API is disabled after toggling fullscreen mode</li>
+      <li><a class="bug blocker">bug 610609</a> The console's logging API is disabled after toggling fullscreen mode</li>
       <li><a class="bug">bug 603856</a> Intermittent failure in resource:///modules/HUDService.jsm</li>
       <li><a class="bug">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
       <li><a class="bug waiting">bug 611600</a> Possible to get Web Console into unclosable state</li>
@@ -215,6 +216,7 @@
       <li><a class="bug">bug 612138</a> Cannot open the web console on my debug build</li>
       <li><a class="bug">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay()</li>
       <li><a class="bug waiting">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
+      <li><a class="bug">bug 612405</a> Devise a better way to determine the web console is a 'native' console object</li>
     </ul>
     
     <h2>Error Console</h2>
