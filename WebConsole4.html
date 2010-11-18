@@ -75,7 +75,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 12, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 18, 2010</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -163,6 +163,7 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
+      <li><a class="bug blocker p1">bug 612861</a> Some content is missing on www.msnbc.com.</li>
       <li><a class="bug patch p1">bug 612658</a> Implement ConsoleStorageService</li>
       <li><a class="bug patch blocker p1">bug 609890</a> display cached console messages when the user opens the console</li>
       <li><a class="bug blocker p1">bug 601260</a> Cache all messages in the ConsoleStorageService once all web console observers are running</li>
@@ -173,6 +174,7 @@
       <li><a class="bug commit blocker p1">bug 601177</a> log errors and warnings at the proper levels for sane filtering</li>
       <li><a class="bug waiting p1">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
       <li><a class="bug patch p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
+      <li><a class="bug patch p1">bug 613013</a> Console API fails to work with iframes</li>
     </ul>
     
     <h2>JavaScript Console</h2>
@@ -208,7 +210,6 @@
       <li><a class="bug blocker p1">bug 610609</a> The console's logging API is disabled after toggling fullscreen mode</li>
       <li><a class="bug p1">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
       <li><a class="bug waiting p1">bug 611600</a> Possible to get Web Console into unclosable state</li>
-      <li><a class="bug commit blocker p1">bug 580618</a> GC removes HeadsUpDisplay after reloading the page</li>
     </ul>
     
     <h2>Error Console</h2>
