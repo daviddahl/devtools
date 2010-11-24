@@ -8,6 +8,7 @@
         var counts = {
           bugs: 0,
           commit: 0,
+          approval: 0,
           waiting: 0,
           review: 0,
           patch: 0,
@@ -26,6 +27,9 @@
           counts.bugs++;
           if (classlist.contains("commit")) {
             counts.commit++;
+          }
+          if (classlist.contains("approval")) {
+            counts.approval++;
           }
           if (classlist.contains("waiting")) {
             counts.waiting++;
@@ -64,7 +68,7 @@
         color: #272;
       }
       
-      .commit {
+      .approval, .commit {
         color: #2c2;
       }
       
@@ -75,7 +79,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 23, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 24, 2010</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -94,6 +98,9 @@
           <th>Bugs that are not yet started</th><td id="counts_notstarted"></td>
         <tr>
           <th>Ready to commit!</th><td id="counts_commit"></td>
+        </tr>
+        <tr>
+          <th>Needs approval</th><td id="counts_approval"></td>
         </tr>
         <tr>
           <th>Up for review</th><td id="counts_review"></td>
@@ -171,7 +178,7 @@
       <li><a class="bug review blocker p1">bug 606498</a> log messages with associated window using nsiScriptError2</li>
       <li><a class="bug review blocker p1">bug 595223</a> log loading from file:// urls</li>
       <li><a class="bug waiting p1">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
-      <li><a class="bug patch p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
+      <li><a class="bug approval p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
     </ul>
     
     <h2>JavaScript Console</h2>
@@ -183,7 +190,6 @@
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
-      <li><a class="bug commit blocker p1">bug 597460</a> Web Console scrolls to top when (at least) a filtered network event occurs</li>
       <li><a class="bug p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server</li>
       <li><a class="bug blocker p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector</li>
       <li><a class="bug waiting blocker p1">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (waiting on bugs 605241 and 587734)</li>
@@ -196,6 +202,7 @@
       <li><a class="bug p1">bug 613364</a> javascript strict errors do not use the property when creating a log message</li>
       <li><a class="bug p2">bug 613280</a> Cannot copy result text in console</li>
       <li><a class="bug p3">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama</li>
+      <li><a class="bug p1">bug 614350</a> Web console's console object colliding with content breaks sites (console.time)</li>
     </ul>
     
     <h2>Error Console</h2>
@@ -208,7 +215,6 @@
     <h2>Cleanup/Tests</h2>
     <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
     <ul>
-      <li><a class="bug p2 review">bug 587615</a> lastTimestamp reset problems in WebConsole (just awaiting approval)</li>
       <li><a class="bug p3">bug 611789</a> Web Console cleanup: Remove the window registry</li>
       <li><a class="bug p3">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay()</li>
       <li><a class="bug waiting p2">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
