@@ -13,7 +13,8 @@
           review: 0,
           patch: 0,
           test: 0,
-          blocker: 0
+          blocker: 0,
+          nom: 0
         };
         $(".bug").each(function(index, elem) {
           var bugNumber = elem.innerHTML;
@@ -42,6 +43,9 @@
           }
           if (classlist.contains("blocker")) {
             counts.blocker++;
+          }
+          if (classlist.contains("nom")) {
+            counts.nom++;
           }
           if (classlist.contains("test")) {
             counts.test++;
@@ -95,6 +99,9 @@
           <th>Blockers (in the total)</th><td id="counts_blocker"></td>
         </tr>
         <tr>
+          <th>Blocker nominations</th><td id="counts_nom"></td>
+        </tr>
+        <tr>
           <th>Bugs that are not yet started</th><td id="counts_notstarted"></td>
         <tr>
           <th>Ready to commit!</th><td id="counts_commit"></td>
@@ -146,8 +153,8 @@
       <li><a class="bug review blocker p1">bug 601667</a> Web Console toolbar styling</li>
       <li><a class="bug patch blocker p1">bug 605621</a> Web Console output box should be reskinned</li>
       <li><a class="bug waiting blocker p1">bug 601196</a> Console styling busted by personas (waiting on bug 601667)</li>
-      <li><a class="bug review p1">bug 601183</a> Safari/Chrome/Google-style completion for the console</li>
-      <li><a class="bug patch p1">bug 603625</a> Network panel heading realignment</li>
+      <li><a class="bug review nom p1">bug 601183</a> Safari/Chrome/Google-style completion for the console</li>
+      <li><a class="bug patch nom p1">bug 603625</a> Network panel heading realignment</li>
       <li><a class="bug review blocker p1">bug 598357</a> change command line output to be easier to understand</li>
       <li><a class="bug patch blocker p1">bug 588379</a> Errors in the Web Console should link to the source file</li>
       <li><a class="bug p1">bug 609372</a> better icons for the web console</li>
@@ -160,7 +167,7 @@
       <li><a class="bug patch p2">bug 611851</a> Make the Web Console resize handle nicer looking on the Mac</li>
       <li><a class="bug patch p1">bug 612300</a> Web Console opening and closing transition is too slow</li>
       <li><a class="bug p3">bug 613925</a> Console shrinks tab's thumbnail height in win7 taskbar</li>.
-      <li><a class="bug p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests</li>
+      <li><a class="bug nom p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -171,14 +178,14 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
-      <li><a class="bug patch p1">bug 612658</a> Implement ConsoleStorageService</li>
+      <li><a class="bug patch nom p1">bug 612658</a> Implement ConsoleStorageService</li>
       <li><a class="bug patch blocker p1">bug 609890</a> display cached console messages when the user opens the console</li>
       <li><a class="bug blocker p1">bug 601260</a> Cache all messages in the ConsoleStorageService once all web console observers are running</li>
-      <li><a class="bug p1">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
+      <li><a class="bug nom p1">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
       <li><a class="bug review blocker p1">bug 606498</a> log messages with associated window using nsiScriptError2</li>
       <li><a class="bug review blocker p1">bug 595223</a> log loading from file:// urls</li>
       <li><a class="bug waiting p1">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
-      <li><a class="bug approval p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
+      <li><a class="bug approval nom p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
     </ul>
     
     <h2>JavaScript Console</h2>
@@ -199,9 +206,9 @@
       <li><a class="bug waiting blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (waiting on bug 597151)</li>
       <li><a class="bug p1">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
       <li><a class="bug waiting p1">bug 611600</a> Possible to get Web Console into unclosable state</li>
-      <li><a class="bug p1">bug 613364</a> javascript strict errors do not use the property when creating a log message</li>
+      <li><a class="bug nom p1">bug 613364</a> javascript strict errors do not use the property when creating a log message</li>
       <li><a class="bug p2">bug 613280</a> Cannot copy result text in console</li>
-      <li><a class="bug p3">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama</li>
+      <li><a class="bug nom p3">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama</li>
       <li><a class="bug p1">bug 614350</a> Web console's console object colliding with content breaks sites (console.time)</li>
     </ul>
     
@@ -228,7 +235,7 @@
       <li><a class="bug test p2">bug 609723</a> Assertion in browser_webconsole_bug_597103_deactivateHUDForContext_unfocused_window.js</li>
       <li><a class="bug test p2">bug 609718</a> Assertion in browser_webconsole_chrome.js</li>
       <li><a class="bug test p2">bug 610953</a> hudservice head.js should not declare variables or call waitForFinish</li>
-      <li><a class="bug test review p2">bug 605634</a> Opening two Web Consoles on the same URI causes errors</li>
+      <li><a class="bug test review nom p2">bug 605634</a> Opening two Web Consoles on the same URI causes errors</li>
     </ul>
   </body>
 </html>
