@@ -83,7 +83,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 24, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, November 29, 2010</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -153,7 +153,7 @@
       <li><a class="bug review blocker p1">bug 601667</a> Web Console toolbar styling</li>
       <li><a class="bug patch blocker p1">bug 605621</a> Web Console output box should be reskinned</li>
       <li><a class="bug waiting blocker p1">bug 601196</a> Console styling busted by personas (waiting on bug 601667)</li>
-      <li><a class="bug review nom p1">bug 601183</a> Safari/Chrome/Google-style completion for the console</li>
+      <li><a class="bug commit nom p1">bug 601183</a> Safari/Chrome/Google-style completion for the console</li>
       <li><a class="bug patch nom p1">bug 603625</a> Network panel heading realignment</li>
       <li><a class="bug review blocker p1">bug 598357</a> change command line output to be easier to understand</li>
       <li><a class="bug patch blocker p1">bug 588379</a> Errors in the Web Console should link to the source file</li>
@@ -167,7 +167,9 @@
       <li><a class="bug patch p2">bug 611851</a> Make the Web Console resize handle nicer looking on the Mac</li>
       <li><a class="bug patch p1">bug 612300</a> Web Console opening and closing transition is too slow</li>
       <li><a class="bug p3">bug 613925</a> Console shrinks tab's thumbnail height in win7 taskbar</li>.
-      <li><a class="bug nom p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests</li>
+      <li><a class="bug blocker p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests</li>
+      <li><a class="bug p1">bug 614784</a> Themes are breaking web console's UI</li>
+      <li><a class="bug patch nom p1">bug 614561</a> pprint() does not take string arguments any more</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -184,32 +186,32 @@
       <li><a class="bug nom p1">bug 602199</a> eliminate cached console data when moving in and out of Private Browsing</li>
       <li><a class="bug review blocker p1">bug 606498</a> log messages with associated window using nsiScriptError2</li>
       <li><a class="bug review blocker p1">bug 595223</a> log loading from file:// urls</li>
-      <li><a class="bug waiting p1">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
+      <li><a class="bug commit blocker p1">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on the other patches that fix uses of nsiConsoleMessage)</li>
       <li><a class="bug approval nom p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console</li>
     </ul>
     
-    <h2>JavaScript Console</h2>
+    <!-- <h2>JavaScript Console</h2>
     <p>These are improvements we want to make to the JavaScript command line:</p>
     <ul>
-      <li><a class="bug p1">bug 612342</a> Cross-origin windows break the JSTerm Sandbox's ability to access properties</li>
-    </ul>
+    </ul> -->
     
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
-      <li><a class="bug p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server</li>
+      <li><a class="bug patch p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server</li>
       <li><a class="bug blocker p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector</li>
       <li><a class="bug waiting blocker p1">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (waiting on bugs 605241 and 587734)</li>
-      <li><a class="bug review blocker p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information</li>
+      <li><a class="bug waiting p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information</li>
       <li><a class="bug patch blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console</li>
       <li><a class="bug waiting blocker p1">bug 603005</a> HUDService should avoid the use of DOM mutation event listeners (waiting on bug 605621)</li>
       <li><a class="bug waiting blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (waiting on bug 597151)</li>
-      <li><a class="bug p1">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
-      <li><a class="bug waiting p1">bug 611600</a> Possible to get Web Console into unclosable state</li>
+      <li><a class="bug patch p1">bug 611032</a> Break out HUDConsoleObserver from HUDService</li>
       <li><a class="bug nom p1">bug 613364</a> javascript strict errors do not use the property when creating a log message</li>
-      <li><a class="bug p2">bug 613280</a> Cannot copy result text in console</li>
+      <li><a class="bug patch nom p2">bug 613280</a> Cannot copy result text in console</li>
       <li><a class="bug nom p3">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama</li>
-      <li><a class="bug p1">bug 614350</a> Web console's console object colliding with content breaks sites (console.time)</li>
+      <li><a class="bug patch nom p1">bug 614350</a> Web console's console object colliding with content breaks sites (console.time)</li>
+      <li><a class="bug p3">bug 614802</a> Entering heavy content(text) in command line breaks the web console</li>
+      <li><a class="bug p1">bug 614793</a> Web console window should automatically scroll to display results</li>
     </ul>
     
     <h2>Error Console</h2>
@@ -222,7 +224,7 @@
     <h2>Cleanup/Tests</h2>
     <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
     <ul>
-      <li><a class="bug p3">bug 611789</a> Web Console cleanup: Remove the window registry</li>
+      <li><a class="bug patch blocker p3">bug 611789</a> Web Console cleanup: Remove the window registry</li>
       <li><a class="bug p3">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay()</li>
       <li><a class="bug waiting p2">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
       <li><a class="bug patch p3">bug 612405</a> Devise a better way to determine the web console is a 'native' console object</li>
