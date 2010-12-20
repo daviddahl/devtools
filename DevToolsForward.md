@@ -1,3 +1,7 @@
+---
+title: Developer Tools 2011
+---
+
 # Developer Tools 2011 #
 
 Kevin Dangoor <kdangoor@mozilla.com>
