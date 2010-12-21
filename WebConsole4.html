@@ -187,7 +187,6 @@
           <li><a class="bug p1">bug 616318</a> Cache all messages that are logged after UI is shown</li>
         </ul>
       </li>
-      <li><a class="bug commit p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console (tests fixed, ready to land 12/20)</li>
       <li><a class="bug commit blocker p3">bug 611789</a> Web Console cleanup: Remove the window registry (window registry removal ready to commit, has some additional cleanup that needs review, 12/21)
         <ul>
           <li><a class="bug waiting p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information
@@ -199,7 +198,7 @@
       </li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p1 blocker waiting">bug 618334</a> normal GET requests should show up under Net/Log, not Net/Error (fixed by bug 605621)</li>
-      <li><a class="bug p1 nom">bug 618078</a> Exception in asynchronous callback not visible in web or error console</li>
+      <li><a class="bug p1 blocker">bug 618078</a> Exception in asynchronous callback not visible in web or error console</li>
     </ul>
 
     <!-- 
@@ -216,7 +215,7 @@
       <li><a class="bug waiting p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector (waiting on doc)</li>
       <li><a class="bug patch blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console (final blocker, <b>needs review since 11/17</b>)</li>
       <li><a class="bug blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (might be fixed by bug 599725. needs to be checked. 12/2)</li>
-      <li><a class="bug nom review p1">bug 613364</a> javascript strict errors fail to show (should be blocker, feedback+, needs review 12/21)</li>
+      <li><a class="bug blocker review p1">bug 613364</a> javascript strict errors fail to show (some review, 12/21)</li>
       <li><a class="bug patch blocker p1">bug 613280</a> Cannot copy result text in console (waiting review since 12/1, blocker flag 12/15)</li>
       <li><a class="bug p1">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama (not assigned, no action since 11/04)</li>
       <li><a class="bug blocker patch p1">bug 614793</a> Web console window should automatically scroll to display results (small patch attached 12/14)</li>
@@ -234,7 +233,7 @@
     <h2>Cleanup/Tests</h2>
     <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
     <ul>
-      <li><a class="bug p3">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay()</li>
+      <li><a class="bug p3">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay() (now split into 10 patches, needs review 12/21)</li>
       <li><a class="bug p2">bug 603001</a> .hud-filtered-by-type .hud-filtered-by-string style rules belong in content</li>
       <li><a class="bug test patch p3">bug 594741</a> Web Console stress test</li>
       <li><a class="bug test patch p3">bug 605351</a> fix and re-enable browser_webconsole_bug_593003_iframe_wrong_hud.js</li>
