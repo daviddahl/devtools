@@ -5,13 +5,13 @@ title: Developer Tools 2011
 # Developer Tools 2011 #
 
 Kevin Dangoor <kdangoor@mozilla.com>
-December 20, 2010
+December 21, 2010
 
 This document is a high-level plan for Mozilla developer tools releases after Firefox 4 and through the rest of 2011. We'll drill into the details of each part of this plan early in 2011.
 
 ## Vision ##
 
-The ultimate goal is to **turn the browser into a dynamic environment for working on web applications**. Our work in 2011 will be the first steps along that path.
+The ultimate goal is to **allow Firefox to be used as a dynamic environment for building web applications**. Our work in 2011 will be the first steps along that path.
 
 For 2011, we want to:
 
@@ -57,9 +57,16 @@ More specifically,
 * A debugger for analyzing and correcting problems in JavaScript code
 * Views into the performance characteristics of an application
 
+While we want to provide tools that touch upon all areas of the SDK, the tools we ship with Firefox will be the ones that are:
+
+1. the most broadly useful
+2. the most polished
+
+Releasing tools initially as separate Jetpacks will allow us to iterate quickly and gather feedback while the tool is polished. That period may also help us determine if a tool is broadly useful enough to incorporate into the product.
+
 ## Multi-Process Firefox ##
 
-Our "electrolysis" (e10s) project to change Firefox to a multi-process model in 2011 will have a significant impact on developer tools. We need to ensure that there is a solid collection of developer tools when the multi-process Firefox ships.
+Our "electrolysis" (e10s) project, which aims to change Firefox to a multi-process model in 2011, will have a significant impact on developer tools. We need to ensure that there is a solid collection of developer tools when the multi-process Firefox ships.
 
 The SDK is part of our strategy to get there. By designing the SDK with a multi-process architecture in mind, we can start working on tools *now*, well before e10s is complete. The implementation of the APIs will need to change to support e10s, but the tools themselves will be ready.
 
