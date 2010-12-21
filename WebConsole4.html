@@ -83,7 +83,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, December 19, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, December 21, 2010</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -167,7 +167,7 @@
       <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
       <li><a class="bug blocker patch p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests (up for review on 12/14)</li>
-      <li><a class="bug patch p2">bug 615805</a> Resizing Inspect Network Request window causes window to move (patch has seen some review with enn, needs review from karl, 12/18)</li>
+      <li><a class="bug review p2">bug 615805</a> Resizing Inspect Network Request window causes window to move (review- from karl, needs new patch and possibly additional bug 12/20)</li>
       <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider</li>
       <li><a class="bug p2">bug 619910</a> autocomplete suggestions are in the wrong place in multi-line input</li>
     </ul>
@@ -180,30 +180,26 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
-      <li><a class="bug patch blocker p1">bug 612658</a> Implement ConsoleStorageService (new patch for review, 12/16)
+      <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (new patch for review rebased 12/21, 12/16)
         <ul>
           <li><a class="bug patch blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (awaiting review since 12/02)</li>
-          <li><a class="bug patch blocker p1">bug 609890</a> display cached console messages when the user opens the console (patch updated, awaiting review since 12/16)</li>
+          <li><a class="bug review blocker p1">bug 609890</a> display cached console messages when the user opens the console (patch updated and rebased 12/20, awaiting review since 12/16)</li>
           <li><a class="bug p1">bug 616318</a> Cache all messages that are logged after UI is shown</li>
         </ul>
       </li>
-      <li><a class="bug commit blocker p1">bug 606498</a> log messages with associated window using nsiScriptError2 (ready to commit, 12/18)
+      <li><a class="bug commit p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console (tests fixed, ready to land 12/20)</li>
+      <li><a class="bug commit blocker p3">bug 611789</a> Web Console cleanup: Remove the window registry (window registry removal ready to commit, has some additional cleanup that needs review, 12/21)
         <ul>
-          <li><a class="bug commit p2">bug 603750</a> nsWebSocket connection failure messages do not show in the Web Console (waiting on 606498 to land)</li>
-          <li><a class="bug commit blocker p1">bug 603706</a> Need a way to track the originating window for all nsIConsoleMessages (waiting on bug 611789?)</li>
-          <li><a class="bug patch blocker p3">bug 611789</a> Web Console cleanup: Remove the window registry (has feedback+, waiting on new feedback 12/9, needs window ID bugs to land)
+          <li><a class="bug waiting p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information
             <ul>
-              <li><a class="bug waiting p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information
-                <ul>
-                  <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (might be superseded by bug 594523? asked for status on 12/1)</li>
-                </ul>
-              </li>
+              <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (might be superseded by bug 594523? asked for status on 12/1)</li>
             </ul>
           </li>
         </ul>
       </li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p1 blocker waiting">bug 618334</a> normal GET requests should show up under Net/Log, not Net/Error (fixed by bug 605621)</li>
+      <li><a class="bug p1 nom">bug 618078</a> Exception in asynchronous callback not visible in web or error console</li>
     </ul>
 
     <!-- 
@@ -220,7 +216,7 @@
       <li><a class="bug waiting p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector (waiting on doc)</li>
       <li><a class="bug patch blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console (final blocker, <b>needs review since 11/17</b>)</li>
       <li><a class="bug blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (might be fixed by bug 599725. needs to be checked. 12/2)</li>
-      <li><a class="bug nom p1">bug 613364</a> javascript strict errors do not use the property when creating a log message (severity unclear, more info needed 12/15)</li>
+      <li><a class="bug nom review p1">bug 613364</a> javascript strict errors fail to show (should be blocker, feedback+, needs review 12/21)</li>
       <li><a class="bug patch blocker p1">bug 613280</a> Cannot copy result text in console (waiting review since 12/1, blocker flag 12/15)</li>
       <li><a class="bug p1">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama (not assigned, no action since 11/04)</li>
       <li><a class="bug blocker patch p1">bug 614793</a> Web console window should automatically scroll to display results (small patch attached 12/14)</li>
@@ -231,7 +227,7 @@
     <h2>Error Console</h2>
     <p>Our old friend the Error Console is being hidden away, since most web developers will get everything they need out of the Web Console. We have a little bit of work left to do to hide the error console.</p>
     <ul>
-      <li><a class="bug review p2">bug 593540</a> Don't display content errors in the Error Console (needs updated patch since 12/12)</li>
+      <li><a class="bug commit p2">bug 593540</a> Don't display content errors in the Error Console (r+ needs minor update and landing, 12/21)</li>
       <li><a class="bug commit blocker p1">bug 602006</a> disable Error Console again once Web Console improvements land (ready to check in, 11/30)</li>
     </ul>
     
