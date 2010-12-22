@@ -170,6 +170,8 @@
       <li><a class="bug review p2">bug 615805</a> Resizing Inspect Network Request window causes window to move (review- from karl, needs new patch and possibly additional bug 12/20)</li>
       <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider</li>
       <li><a class="bug p2">bug 619910</a> autocomplete suggestions are in the wrong place in multi-line input</li>
+      <li><a class="bug p3">bug 620744</a> Network request popups can't be closed with a tiled window manager</li>
+      <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -180,13 +182,14 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
-      <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (new patch for review rebased 12/21, 12/16)
+      <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (r-, 12/22)
         <ul>
           <li><a class="bug patch blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (awaiting review since 12/02)</li>
           <li><a class="bug review blocker p1">bug 609890</a> display cached console messages when the user opens the console (patch updated and rebased 12/20, awaiting review since 12/16)</li>
           <li><a class="bug p1">bug 616318</a> Cache all messages that are logged after UI is shown</li>
         </ul>
       </li>
+      <li><a class="bug patch p1">bug 620832</a> Web console attempts to remove its observers multiple times (given feedback+, 12/22)</li>
       <li><a class="bug commit blocker p3">bug 611789</a> Web Console cleanup: Remove the window registry (window registry removal ready to commit, has some additional cleanup that needs review, 12/21)
         <ul>
           <li><a class="bug waiting p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information
@@ -211,6 +214,7 @@
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
+      <li><a class="bug patch blocker p1">bug 620875</a> Intermittent browser_webconsole_bug_595934_message_categories.js</li>
       <li><a class="bug patch p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server (awaiting review since 12/1)</li>
       <li><a class="bug waiting p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector (waiting on doc)</li>
       <li><a class="bug patch blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console (final blocker, <b>needs review since 11/17</b>)</li>
@@ -243,6 +247,7 @@
       <li><a class="bug test p2">bug 610953</a> hudservice head.js should not declare variables or call waitForFinish</li>
       <li><a class="bug test review p2">bug 605634</a> Opening two Web Consoles on the same URI causes errors (waiting since 10/20 for review)</li>
       <li><a class="bug waiting p3">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (looks to be test only, 12/1)</li>
+      <li><a class="bug patch p3">bug 588871</a> Remove ConsoleStorage methods used for log message storage</li>
     </ul>
   </body>
 </html>
