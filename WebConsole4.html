@@ -83,7 +83,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, December 21, 2010</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 2, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -150,26 +150,23 @@
     <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
     <p>Open UI polish bugs:</p>
     <ul>
-      <li><a class="bug review blocker p1">bug 605621</a> Web Console output box should be reskinned (ready to commit code, CSS needs review, 12/14)
+      <li><a class="bug review blocker p1">bug 605621</a> Web Console output box should be reskinned (code committed, css got r- on 12/23)
       <ul>
-        <li><a class="bug waiting blocker p1">bug 588379</a> Errors in the Web Console should link to the source file (waiting on bug 605621)</li>
-        <li><a class="bug waiting blocker p1">bug 603005</a> HUDService should avoid the use of DOM mutation event listeners (waiting on bug 605621)</li>
-        <li><a class="bug waiting p2">bug 604618</a> Area outside the network traffic messages should not trigger the "Inspect Network Request" window on mouse click event (waiting on bug 605621)</li>
         <li><a class="bug blocker p1 waiting">bug 601196</a> Console styling busted by personas (fixed by bug 605621, 12/13)</li>
         <li><a class="bug waiting p2">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
         <li><a class="bug blocker waiting p1">bug 615791</a> Web console doesn't support high contrast mode on Windows (waiting on 605621)</li>
       </ul>
       </li>
-      <li><a class="bug review p1">bug 603625</a> Network panel heading realignment (has had a round of review and been updated, 12/17)</li>
-      <li><a class="bug patch p1">bug 609372</a> better icons for the web console (new icons up, 12/22)</li>
+      <li><a class="bug approval p1">bug 603625</a> Network panel heading realignment (r+ on 1/1, needs minor update and approval)</li>
+      <li><a class="bug patch p1">bug 609372</a> better icons for the web console (patch needs rebasing, 12/23)</li>
       <li><a class="bug patch p2">bug 611440</a> Smart abbreviation for URLs in the Web Console (this would be awesome!)</li>
       <li><a class="bug p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
       <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
-      <li><a class="bug blocker patch p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests (up for review on 12/14)</li>
+      <li><a class="bug blocker patch p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests (needs commentary relative to bug 605621, 12/31)</li>
       <li><a class="bug review p2">bug 615805</a> Resizing Inspect Network Request window causes window to move (review- from karl, needs new patch and possibly additional bug 12/20)</li>
       <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider</li>
-      <li><a class="bug p2">bug 619910</a> autocomplete suggestions are in the wrong place in multi-line input</li>
+      <li><a class="bug p2 review">bug 619910</a> autocomplete suggestions are in the wrong place in multi-line input (r+ 12/23, Joe wants add'l feedback from Gavin)</li>
       <li><a class="bug p3">bug 620744</a> Network request popups can't be closed with a tiled window manager</li>
       <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
     </ul>
@@ -182,26 +179,18 @@
     </ul>
     <p>Open logging functionality bugs:</p>
     <ul>
-      <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (r-, 12/22)
+      <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (r-, 12/23)
         <ul>
-          <li><a class="bug patch blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (awaiting review since 12/02)</li>
+          <li><a class="bug review blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (review- on 12/24)</li>
           <li><a class="bug review blocker p1">bug 609890</a> display cached console messages when the user opens the console (r+, 12/22)</li>
           <li><a class="bug p1">bug 616318</a> Cache all messages that are logged after UI is shown</li>
         </ul>
       </li>
-      <li><a class="bug patch p1">bug 620832</a> Web console attempts to remove its observers multiple times (given feedback+, 12/22)</li>
-      <li><a class="bug commit blocker p3">bug 611789</a> Web Console cleanup: Remove the window registry (window registry removal ready to commit, has some additional cleanup that needs review, 12/21)
-        <ul>
-          <li><a class="bug waiting p1">bug 594523</a> When tab location changes, the HUDService fails to clear/update state information
-            <ul>
-              <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (might be superseded by bug 594523? asked for status on 12/1)</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
+      <li><a class="bug review p1">bug 620832</a> Web console attempts to remove its observers multiple times (r-, 12/23)</li>
+      <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (might be superseded by bug 594523? asked for status on 12/1)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p1 blocker waiting">bug 618334</a> normal GET requests should show up under Net/Log, not Net/Error (fixed by bug 605621)</li>
-      <li><a class="bug p1 blocker">bug 618078</a> Exception in asynchronous callback not visible in web or error console</li>
+      <li><a class="bug p1 blocker">bug 618078</a> Exception in asynchronous callback not visible in web or error console (sdwilsh, gavin and bz have all commented, last on 1/1)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
     </ul>
 
@@ -215,15 +204,15 @@
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
-      <li><a class="bug patch blocker p1">bug 620875</a> Intermittent browser_webconsole_bug_595934_message_categories.js</li>
+      <li><a class="bug commit blocker p1">bug 620875</a> Intermittent browser_webconsole_bug_595934_message_categories.js (r+/a+ 12/29)</li>
       <li><a class="bug patch p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server (awaiting review since 12/1)</li>
       <li><a class="bug waiting p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector (waiting on doc)</li>
-      <li><a class="bug patch blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console (final blocker, <b>needs review since 11/17</b>)</li>
+      <li><a class="bug commit blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console (r+ on 12/31)</li>
       <li><a class="bug blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (might be fixed by bug 599725. needs to be checked. 12/2)</li>
-      <li><a class="bug blocker review p1">bug 613364</a> javascript strict errors fail to show (some review, 12/21)</li>
-      <li><a class="bug patch blocker p1">bug 613280</a> Cannot copy result text in console (waiting review since 12/1, blocker flag 12/15)</li>
+      <li><a class="bug blocker commit p1">bug 613364</a> javascript strict errors fail to show (some review, 12/21)</li>
+      <li><a class="bug commit blocker p1">bug 613280</a> Cannot copy result text in console (r+ 12/31)</li>
       <li><a class="bug p1">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama (not assigned, no action since 11/04)</li>
-      <li><a class="bug blocker patch p1">bug 614793</a> Web console window should automatically scroll to display results (small patch attached 12/14)</li>
+      <li><a class="bug blocker patch p1">bug 614793</a> Web console window should automatically scroll to display results (dolske thinks this may have been fixed by bug 605621, needs comment 12/31)</li>
       <li><a class="bug p2">bug 615408</a> Web Console gets stuck at 0px height w/ border and keyboard shortcut breaks</li>
       <li><a class="bug p1">bug 618311</a> network request window stays open when switching to private browsing (data leak)</li>
     </ul>
@@ -238,6 +227,7 @@
     <h2>Cleanup/Tests</h2>
     <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
     <ul>
+      <li><a class="bug">bug 621291</a> Network panel strings need to include the colons (want feedback from l10n, 1/2)</li>
       <li><a class="bug p3">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay() (now split into 10 patches, needs review 12/21)</li>
       <li><a class="bug p2">bug 603001</a> .hud-filtered-by-type .hud-filtered-by-string style rules belong in content</li>
       <li><a class="bug test patch p3">bug 594741</a> Web Console stress test</li>
