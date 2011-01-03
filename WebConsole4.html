@@ -83,7 +83,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 2, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 3, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -157,7 +157,7 @@
         <li><a class="bug blocker waiting p1">bug 615791</a> Web console doesn't support high contrast mode on Windows (waiting on 605621)</li>
       </ul>
       </li>
-      <li><a class="bug approval p1">bug 603625</a> Network panel heading realignment (r+ on 1/1, needs minor update and approval)</li>
+      <li><a class="bug approval p1">bug 603625</a> Network panel heading realignment (needs approval 1/3)</li>
       <li><a class="bug patch p1">bug 609372</a> better icons for the web console (patch needs rebasing, 12/23)</li>
       <li><a class="bug patch p2">bug 611440</a> Smart abbreviation for URLs in the Web Console (this would be awesome!)</li>
       <li><a class="bug p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
@@ -194,12 +194,11 @@
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
     </ul>
 
-    <!-- 
     <h2>JavaScript Console</h2>
     <p>These are improvements we want to make to the JavaScript command line:</p>
     <ul>
+      <li><a class="bug p2">bug 621644</a> $ is shadowed in web console (new on 12/27, discussion on 1/3)</li>
     </ul>
-    -->
     
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
@@ -210,9 +209,9 @@
       <li><a class="bug commit blocker p1">bug 602572</a> Log request and response bodies checkbox issues in Web Console (r+ on 12/31)</li>
       <li><a class="bug blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (might be fixed by bug 599725. needs to be checked. 12/2)</li>
       <li><a class="bug blocker commit p1">bug 613364</a> javascript strict errors fail to show (some review, 12/21)</li>
-      <li><a class="bug commit blocker p1">bug 613280</a> Cannot copy result text in console (r+ 12/31)</li>
+      <li><a class="bug waiting blocker p1">bug 613280</a> Cannot copy result text in console (fixed by part 2 of bug 605621, this bug just needs to have the test 1/3)</li>
       <li><a class="bug p1">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama (not assigned, no action since 11/04)</li>
-      <li><a class="bug blocker patch p1">bug 614793</a> Web console window should automatically scroll to display results (dolske thinks this may have been fixed by bug 605621, needs comment 12/31)</li>
+      <li><a class="bug blocker waiting p1">bug 614793</a> Web console window should automatically scroll to display results (fixed by bug 605621, might need test 1/3)</li>
       <li><a class="bug p2">bug 615408</a> Web Console gets stuck at 0px height w/ border and keyboard shortcut breaks</li>
       <li><a class="bug p1">bug 618311</a> network request window stays open when switching to private browsing (data leak)</li>
     </ul>

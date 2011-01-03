@@ -5,20 +5,30 @@ title: Developer Tools 2011
 # Developer Tools 2011 #
 
 Kevin Dangoor <kdangoor@mozilla.com>
-December 21, 2010
+January 3, 2011
 
 This document is a high-level plan for Mozilla developer tools releases after Firefox 4 and through the rest of 2011. We'll drill into the details of each part of this plan early in 2011.
 
 ## Vision ##
 
-The ultimate goal is to **allow Firefox to be used as a dynamic environment for building web applications**. Our work in 2011 will be the first steps along that path.
+The ultimate goal is to **allow Firefox to be used as a dynamic environment for building web applications**. In 2011, we'll take the first steps along that path.
 
-For 2011, we want to:
+This year, we want to:
 
 * **Enable web developers to easily help with making the tools they use better**
 * **Include tools with Firefox that will help with the most common web development tasks**
 * **Prepare to allow a variety of tools to easily be built on multi-process Firefox**
 * **Gather feedback from frequent releases**. Many developers are "early adopters" and would be willing to install Firefox add-ons to get new tools to make their lives better, as seen by the millions of users that have the Web Developer Toolbar and Firebug installed. We can take advantage of this to gather feedback and further encourage participation in the development of the tools.
+
+## Our Priorities ##
+
+1. Help web developers on electrolysis-based (see "Multi-Process Firefox" below) desktop Firefox
+2. Help web developers create their mobile apps on with Firefox for mobile (with remote debugging interfaces)
+3. Help Jetpack developers debug their add-ons
+4. Help Firefox developers debug the browser
+5. Help developers of other Mozilla platform projects
+
+Jetpacks and Firefox itself are built on many of the same technologies as the web. The same SpiderMonkey JavaScript engine that runs JS code on web pages is also responsible for a great deal of the Firefox user interface and for running Jetpacks. Where possible, we will engineer our work to support anyone who is building on the Mozilla platform, but our top priority for 2011 is to delight people building web applications.
 
 ## Empowering Web Developers ##
 
@@ -64,13 +74,26 @@ While we want to provide tools that touch upon all areas of the SDK, the tools w
 
 Releasing tools initially as separate Jetpacks will allow us to iterate quickly and gather feedback while the tool is polished. That period may also help us determine if a tool is broadly useful enough to incorporate into the product.
 
+## Supporting Open Web Standards via Tools ##
+
+Ideally, every person using web sites and applications is using a modern browser with support for the latest standards. Of course, even this ideal scenario falls short of the ideal: what are the "latest standards"? The "HTML5" standard is still evolving and there has been considerable churn in areas like Web Sockets and IndexedDB vs. Web SQL Database.
+
+Among the many user interface challenges that we face, we want our tools to:
+
+1. provide support for and encourage users to develop for the latest standards supported by modern browsers
+2. assist users in making good tradeoffs when they need to support older browsers
+
+Most web developers are given constraints concerning which browsers they must support, with some developers saddled with a requirement to support a nearly decade old browser. If we can help developers both provide support for the browsers they are required to support *and* take advantage of newer browser features, we will be making the web a better place.
+
+This won't be easy, and I won't even dive into specifics on how to do this here. I'm writing this as a guideline that we can apply and one more thing to think about as we design new tools.
+
 ## Multi-Process Firefox ##
 
 Our "electrolysis" (e10s) project, which aims to change Firefox to a multi-process model in 2011, will have a significant impact on developer tools. We need to ensure that there is a solid collection of developer tools when the multi-process Firefox ships.
 
 The SDK is part of our strategy to get there. By designing the SDK with a multi-process architecture in mind, we can start working on tools *now*, well before e10s is complete. The implementation of the APIs will need to change to support e10s, but the tools themselves will be ready.
 
-Existing tools, including Firebug and the Web Developer Toolbar, will need to be updated for e10s. By encouraging developers to start adopting the SDK as soon as possible, we can have a smoother transition to the e10s Firefox.
+Existing tools, including Firebug and the Web Developer Toolbar, will need to be updated for e10s. By encouraging developers to start adopting the SDK as soon as possible, we can have a smoother transition to the e10s Firefox for these and other popular add-ons.
 
 ## Frequent Releases ##
 
@@ -83,7 +106,7 @@ We want to be able to start a feedback loop with developers early, so that we ca
 3. updates to the code are then released as updated add-ons that override the built-in feature
 4. repeat from step 2
 
-This cycle will allow web developers to have greater input into the tools without running Minefield.
+This cycle will allow web developers to have greater input into the tools without running Minefield. And, since these users are developers themselves, more of that input can be in the form of code changes.
 
 # Process #
 
@@ -96,7 +119,7 @@ Our work has the potential to touch a number of groups working on Mozilla projec
 The intention is to add just enough additional process to:
 
 1. communicate to other interested people what we're up to and how they could jump in or provide feedback
-2. maintain a reasonable schedule
+2. maintain a reasonable schedule for the most important features
 
 Tying these documents to our frequent releases means that no single document should get large, boring and unwieldy.
 
