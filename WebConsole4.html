@@ -83,7 +83,7 @@
   </head>
   <body>
     <h1>Firefox 4 Web Console Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 6, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 11, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -150,7 +150,7 @@
     <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
     <p>Open UI polish bugs:</p>
     <ul>
-      <li><a class="bug review blocker p1">bug 605621</a> Web Console output box should be reskinned (code committed, css got r- on 12/23)
+      <li><a class="bug review blocker p1">bug 605621</a> Web Console output box should be reskinned (code committed, css got r- on 12/23, patch updated 1/6)
       <ul>
         <li><a class="bug blocker p1 waiting">bug 601196</a> Console styling busted by personas (fixed by bug 605621, 12/13)</li>
         <li><a class="bug waiting p2">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
@@ -170,6 +170,7 @@
       <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
       <li><a class="bug p2">bug 622303</a> Web Console should remember filter settings</li>
       <li><a class="bug p3">bug 623597</a> Properly align layout elements in net inspector when horizontal scrolling is needed</li>
+      <li><a class="bug p2">bug 623749</a> Add shortcut or popup menu to enable Select-All in console input line</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -182,13 +183,13 @@
     <ul>
       <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (new patch, 1/6)
         <ul>
-          <li><a class="bug review blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (review- on 12/24)</li>
-          <li><a class="bug waiting blocker p1">bug 609890</a> display cached console messages when the user opens the console (r+, 12/22)</li>
+          <li><a class="bug review blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (new patch on 1/7)</li>
+          <li><a class="bug waiting blocker p1">bug 609890</a> display cached console messages when the user opens the console (r+, 12/22, patch updated 1/6)</li>
           <li><a class="bug p1">bug 616318</a> Cache all messages that are logged after UI is shown</li>
         </ul>
       </li>
       <li><a class="bug review p1">bug 620832</a> Web console attempts to remove its observers multiple times (r-, 12/23)</li>
-      <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (looks like it needs rebasing, asking for comment 1/6)</li>
+      <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p1 blocker">bug 618078</a> Exception in asynchronous callback not visible in web or error console (sdwilsh, gavin and bz have all commented, last on 1/1)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
@@ -203,11 +204,10 @@
     <h2>Other bugs</h2>
     <p>Yep, there are some other random things we're fixing up as well.</p>
     <ul>
-      <li><a class="bug patch p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server (awaiting review since 12/1)</li>
+      <li><a class="bug patch blocker p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server (patch rebased, 1/7)</li>
       <li><a class="bug waiting p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector (waiting on doc)</li>
-      <li><a class="bug blocker p1">bug 606055</a> Memory leaks on google.com with the Web Console open (might be fixed by bug 599725. needs to be checked. 12/2)</li>
+      <li><a class="bug blocker waiting p1">bug 606055</a> Memory leaks on google.com with the Web Console open (fixed by bug 599725)</li>
       <li><a class="bug p1">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama (not assigned, no action since 11/04)</li>
-      <li><a class="bug p2">bug 615408</a> Web Console gets stuck at 0px height w/ border and keyboard shortcut breaks</li>
       <li><a class="bug p1">bug 618311</a> network request window stays open when switching to private browsing (data leak)</li>
     </ul>
     
