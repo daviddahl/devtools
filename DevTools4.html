@@ -1,0 +1,262 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+    <title>Developer Tools in Firefox 4</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var counts = {
+          bugs: 0,
+          commit: 0,
+          approval: 0,
+          waiting: 0,
+          review: 0,
+          patch: 0,
+          test: 0,
+          blocker: 0,
+          nom: 0,
+          hardblocker: 0
+        };
+        $(".bug").each(function(index, elem) {
+          var bugNumber = elem.innerHTML;
+          var lastSpace = bugNumber.lastIndexOf(" ");
+          if (lastSpace > -1) {
+            bugNumber = bugNumber.substring(lastSpace + 1);
+          }
+          elem.setAttribute("href", "https://bugzilla.mozilla.org/show_bug.cgi?id=" + bugNumber);
+          elem.setAttribute("target", "_blank");
+          var classlist = elem.classList;
+          counts.bugs++;
+          if (classlist.contains("commit")) {
+            counts.commit++;
+          }
+          if (classlist.contains("approval")) {
+            counts.approval++;
+          }
+          if (classlist.contains("waiting")) {
+            counts.waiting++;
+          }
+          if (classlist.contains("review")) {
+            counts.review++;
+          }
+          if (classlist.contains("patch")) {
+            counts.patch++;
+          }
+          if (classlist.contains("blocker")) {
+            counts.blocker++;
+          }
+          if (classlist.contains("nom")) {
+            counts.nom++;
+          }
+          if (classlist.contains("test")) {
+            counts.test++;
+          }
+          if (classlist.contains('hardblocker')) {
+            counts.hardblocker++;
+          }
+        });
+        for (var key in counts) {
+          $('#counts_' + key).html(counts[key]);
+        }
+        $("#counts_notstarted").html(counts.bugs - counts.review - counts.commit - counts.patch - counts.waiting);
+      });
+    </script>
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <style>
+      .bug {
+        color: #c22;
+      }
+      
+      .blocker {
+        color: #c22;
+        font-weight: bold;
+      }
+      
+      .patch, .review, .waiting {
+        color: #272;
+      }
+      
+      .approval, .commit {
+        color: #2c2;
+      }
+      
+      #counts_table td {
+        text-align: right;
+      }
+      
+      .hardblocker {
+        color: #fff;
+        background-color: black;
+        font-weight: bold;
+        padding-left: 1em;
+        padding-right: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Firefox 4 Developer Tools Completion Status</h1>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 11, 2011</p>
+    <h2>Overview</h2>
+    <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
+    <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
+    <p>If you find any errors in this document, please <a href="http://scr.im/kdangoor">email me</a> or <a href="http://github.com/mozilla/devtools">fork this project on GitHub</a>.
+    Make sure you're working in the gh-pages branch.</p>
+    <p>The numerical picture of Web Console bugs:</p>
+    <table id="counts_table">
+      <tbody>
+        <tr>
+          <th>Total bugs in plan for Firefox 4</th><td id="counts_bugs"></td>
+        </tr>
+        <tr>
+          <th>Hard blockers (in the total)</th><td id="counts_hardblocker"></td>
+        </tr>
+        <tr>
+          <th>Blockers (in the total)</th><td id="counts_blocker"></td>
+        </tr>
+        <tr>
+          <th>Blocker nominations</th><td id="counts_nom"></td>
+        </tr>
+        <tr>
+          <th>Bugs that are not yet started</th><td id="counts_notstarted"></td>
+        <tr>
+          <th>Ready to commit!</th><td id="counts_commit"></td>
+        </tr>
+        <tr>
+          <th>Needs approval</th><td id="counts_approval"></td>
+        </tr>
+        <tr>
+          <th>Up for review</th><td id="counts_review"></td>
+        </tr>
+        <tr>
+          <th>Has a patch</th><td id="counts_patch"></td>
+        </tr>
+        <tr>
+          <th>Fixed by other bugs</th><td id="counts_waiting"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p>Bug key:</p>
+    <ul>
+      <li class="blocker">Blocker without patches</li>
+      <li class="commit">Ready to commit</li>
+      <li class="review">Progressing</li>
+      <li style="color: #c22">Other bug without patches</li>
+    </ul>
+    
+    <h2>UI Polish</h2>
+    <p>The Web Console is useful today, but visual changes will go a long way toward making the Web Console look great and be even more usable.</p>
+    <div class="image">
+      <img src="images/TheConsole.png" width="800">
+      <div>Web Console, 10/1</div>
+    </div>
+    <div class="image">
+      <img src="https://bug605621.bugzilla.mozilla.org/attachment.cgi?id=487101" width="800">
+      <div>Work-in-progress screenshot, 10/29</div>
+    </div>
+    <div class="image">
+      <img src="images/NetworkInspector.png">
+      <div>Network Inspector, 10/1</div>
+    </div>
+    <div class="image">
+      <img src="https://bug603625.bugzilla.mozilla.org/attachment.cgi?id=488169">
+      <div>Network Inspector with bug 603625 patch applied</div>
+    </div>
+    <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
+    <p>Open UI polish bugs:</p>
+    <ul>
+      <li><a class="bug review blocker p1">bug 605621</a> Web Console output box should be reskinned (code committed, css got r- on 12/23, patch updated 1/6)
+      <ul>
+        <li><a class="bug blocker p1 waiting">bug 601196</a> Console styling busted by personas (fixed by bug 605621, 12/13)</li>
+        <li><a class="bug waiting p2">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output</li>
+        <li><a class="bug blocker waiting p1">bug 615791</a> Web console doesn't support high contrast mode on Windows (waiting on 605621)</li>
+        <li><a class="bug waiting blocker hardblocker p1">bug 613280</a> Cannot copy result text in console (fixed by part 2 of bug 605621, this bug just needs to have the test 1/3)</li>
+      </ul>
+      </li>
+      <li><a class="bug patch p1">bug 609372</a> better icons for the web console (patch needs rebasing, 12/23)</li>
+      <li><a class="bug patch p2">bug 611440</a> Smart abbreviation for URLs in the Web Console (this would be awesome!)</li>
+      <li><a class="bug p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
+      <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
+      <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
+      <li><a class="bug blocker patch p1">bug 613642</a> Web Console is hard to use with polling XMLHttpRequests (has new patch, 1/3)</li>
+      <li><a class="bug review p2">bug 615805</a> Resizing Inspect Network Request window causes window to move (review- from karl, needs new patch and possibly additional bug 12/20)</li>
+      <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider</li>
+      <li><a class="bug p3">bug 620744</a> Network request popups can't be closed with a tiled window manager</li>
+      <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
+      <li><a class="bug p2">bug 622303</a> Web Console should remember filter settings</li>
+      <li><a class="bug p3">bug 623597</a> Properly align layout elements in net inspector when horizontal scrolling is needed</li>
+      <li><a class="bug p2">bug 623749</a> Add shortcut or popup menu to enable Select-All in console input line</li>
+    </ul>
+    
+    <h2>Logging Functionality</h2>
+    <p>There are two big areas in which we are improving message logging. This improved logging will also help Firebug.</p>
+    <ul>
+      <li>Many more messages will be associated directly with the window/tab for which they are relevant. The Web Console and Firebug have been using heuristics to join messages with their windows for these to date, rather than explicit data. The end result for the user will be a much better experience in finding errors in their code.</li>
+      <li>The lazy console service will allow logging of messages before the console is opened. Specifically, any messages sent to the console API (console.log, for example) or any CSS and JavaScript errors will be cached for display when the user opens the Web Console. Network traffic logging will <em>not</em> be cached before the console is opened.</li>
+    </ul>
+    <p>Open logging functionality bugs:</p>
+    <ul>
+      <li><a class="bug review blocker p1">bug 612658</a> Implement ConsoleStorageService (new patch, 1/6)
+        <ul>
+          <li><a class="bug review blocker p1">bug 611032</a> Break out HUDConsoleObserver from HUDService (new patch on 1/7)</li>
+          <li><a class="bug waiting blocker p1">bug 609890</a> display cached console messages when the user opens the console (r+, 12/22, patch updated 1/6)</li>
+          <li><a class="bug p1">bug 616318</a> Cache all messages that are logged after UI is shown</li>
+        </ul>
+      </li>
+      <li><a class="bug review p1">bug 620832</a> Web console attempts to remove its observers multiple times (r-, 12/23)</li>
+      <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
+      <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
+      <li><a class="bug p1 blocker">bug 618078</a> Exception in asynchronous callback not visible in web or error console (sdwilsh, gavin and bz have all commented, last on 1/1)</li>
+      <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
+    </ul>
+
+    <h2>JavaScript Console</h2>
+    <p>These are improvements we want to make to the JavaScript command line:</p>
+    <ul>
+      <li><a class="bug p2">bug 621644</a> $ is shadowed in web console (new on 12/27, discussion on 1/3)</li>
+    </ul>
+    
+    <h2>Other bugs</h2>
+    <p>Yep, there are some other random things we're fixing up as well.</p>
+    <ul>
+      <li><a class="bug patch blocker p2">bug 599725</a> Web Console reports data the server did not send (304 not modified) - shows headers from the cache, not headers from the server (patch rebased, 1/7)</li>
+      <li><a class="bug waiting p1">bug 601126</a> Time elapsed in console log doesn't always match time in net request inspector (waiting on doc)</li>
+      <li><a class="bug blocker waiting p1 hardblocker">bug 606055</a> Memory leaks on google.com with the Web Console open (fixed by bug 599725)</li>
+      <li><a class="bug p1">bug 609744</a> Make the web console control-e terminal keybinding play nicely with Panorama (not assigned, no action since 11/04)</li>
+      <li><a class="bug p1">bug 618311</a> network request window stays open when switching to private browsing (data leak)</li>
+    </ul>
+    
+    <h2>Error Console</h2>
+    <p>Our old friend the Error Console is being hidden away, since most web developers will get everything they need out of the Web Console. We have a little bit of work left to do to hide the error console.</p>
+    <ul>
+      <li><a class="bug commit p2">bug 593540</a> Don't display content errors in the Error Console (r+ needs minor update and landing, 12/21)</li>
+      <li><a class="bug commit blocker p1">bug 602006</a> disable Error Console again once Web Console improvements land (ready to check in, 11/30)</li>
+    </ul>
+    
+    <h2>Cleanup/Tests</h2>
+    <p>We have some bugs that are not functionality-related but are important bits of cleanup.</p>
+    <ul>
+      <li><a class="bug">bug 621291</a> Network panel strings need to include the colons (want feedback from l10n, 1/2)</li>
+      <li><a class="bug p3">bug 592469</a> Web Console cleanup: kill getHeadsUpDisplay() (now split into 10 patches, needs review 12/21)</li>
+      <li><a class="bug p2">bug 603001</a> .hud-filtered-by-type .hud-filtered-by-string style rules belong in content</li>
+      <li><a class="bug test patch p3">bug 594741</a> Web Console stress test</li>
+      <li><a class="bug test patch p3">bug 605351</a> fix and re-enable browser_webconsole_bug_593003_iframe_wrong_hud.js</li>
+      <li><a class="bug test p3">bug 607325</a> Test browser_webconsole_bug_594477_clickable_output.js always fails for me</li>
+      <li><a class="bug test p2">bug 609723</a> Assertion in browser_webconsole_bug_597103_deactivateHUDForContext_unfocused_window.js</li>
+      <li><a class="bug test p2">bug 609718</a> Assertion in browser_webconsole_chrome.js</li>
+      <li><a class="bug test p2">bug 610953</a> hudservice head.js should not declare variables or call waitForFinish</li>
+      <li><a class="bug test review p2">bug 605634</a> Opening two Web Consoles on the same URI causes errors (waiting since 10/20 for review)</li>
+      <li><a class="bug waiting p3">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (looks to be test only, 12/1)</li>
+      <li><a class="bug patch p3">bug 588871</a> Remove ConsoleStorage methods used for log message storage</li>
+    </ul>
+    
+    <h2>Firebug</h2>
+    <p>Firebug is a separate project, but it is a critical developer tool. These are the bugs that we need to fix in order to have a working Firebug for Firefox 4.</p>
+    <ul>
+      <li><a class="bug blocker p1 hardblocker">bug 618549</a> Crash in [@ CallPropertyOp ]</li>
+      <li><a class="bug blocker p1">bug 623351</a> Crash running Firebug test suite due to calling getCSSStyleRules without ensuring unique inners first</li>
+      <li><a class="bug blocker p1 hardblocker">bug 620486</a> window.wrappedJSObject != window.wrappedJSObject</li>
+      <li><a class="bug review blocker p1 hardblocker">bug 624316</a> [jsd] function objects .wrapValue fails (patch with r+, 1/11)</li>
+    </ul>
+  </body>
+</html>
