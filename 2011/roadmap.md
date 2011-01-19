@@ -5,26 +5,29 @@ title: Developer Tools 2011
 # Developer Tools 2011 #
 
 Kevin Dangoor <kdangoor@mozilla.com>
-January 3, 2011
+January 19, 2011
 
 This document is a high-level plan for Mozilla developer tools releases after Firefox 4 and through the rest of 2011. We'll drill into the details of each part of this plan early in 2011.
 
 ## Vision ##
 
-The ultimate goal is to **allow Firefox to be used as a dynamic environment for building web applications**. In 2011, we'll take the first steps along that path.
+The ultimate goal is to **make Firefox the best dynamic environment for building modern web applications**. In 2011, we'll take the first steps along that path.
 
 This year, we want to:
 
-* **Enable web developers to easily help with making the tools they use better**
-* **Include tools with Firefox that will help with the most common web development tasks**
-* **Prepare to allow a variety of tools to easily be built on multi-process Firefox**
-* **Gather feedback from frequent releases**. Many developers are "early adopters" and would be willing to install Firefox add-ons to get new tools to make their lives better, as seen by the millions of users that have the Web Developer Toolbar and Firebug installed. We can take advantage of this to gather feedback and further encourage participation in the development of the tools.
+1. **Include tools with Firefox that will help with the most common web development tasks**
+2. **Prepare to allow a variety of tools to easily be built on multi-process Firefox**
+
+To accomplish our goals for this year and set the stage for the challenging work that follows, we will take an approach that:
+
+* **Enables web developers to easily help with making the tools they use better**
+* **Gathers feedback via frequent releases**. Many developers are "early adopters" and would be willing to install Firefox add-ons to get new tools to make their lives better, as seen by the millions of users that have the Web Developer Toolbar and Firebug installed. We can take advantage of this to gather feedback and further encourage participation in the development of the tools.
 
 ## Our Priorities ##
 
 1. Help web developers on electrolysis-based (see "Multi-Process Firefox" below) desktop Firefox
-2. Help web developers create their mobile apps on with Firefox for mobile (with remote debugging interfaces)
-3. Help Jetpack developers debug their add-ons
+2. Help Jetpack developers debug their add-ons
+3. Help web developers create their mobile apps on with Firefox for mobile (with remote debugging interfaces)
 4. Help Firefox developers debug the browser
 5. Help developers of other Mozilla platform projects
 
