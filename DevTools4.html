@@ -95,7 +95,7 @@
   </head>
   <body>
     <h1>Firefox 4 Developer Tools Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 12, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 18, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -186,6 +186,7 @@
       <li><a class="bug p2">bug 626607</a> Select All on webconsole includes messages that were filtered out</li>
       <li><a class="bug p3">bug 626018</a> Make console filtering buttons tri-state</li>
       <li><a class="bug p1">bug 626484</a> Incorrect order of lines when copying from web console</li>
+      <li><a class="bug p2">bug 626702</a> Web console's copy functionality is busted on Ubuntu</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -206,8 +207,9 @@
       <li><a class="bug review p1">bug 620832</a> Web console attempts to remove its observers multiple times (r-, 12/23)</li>
       <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
-      <li><a class="bug p1 blocker">bug 618078</a> Exception in asynchronous callback not visible in web or error console (patch updated after bz's comments 1/18)</li>
+      <li><a class="bug p1 blocker commit">bug 618078</a> Exception in asynchronous callback not visible in web or error console (patch updated after bz's comments 1/18)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
+      <li><a class="bug p1 blocker hardblocker">bug 626745</a> security issue</li>
     </ul>
 
     <h2>JavaScript Console</h2>
@@ -251,6 +253,7 @@
     <p>Firebug is a separate project, but it is a critical developer tool. These are the bugs that we need to fix in order to have a working Firebug for Firefox 4.</p>
     <ul>
       <li><a class="bug blocker p1 commit hardblocker">bug 620486</a> window.wrappedJSObject != window.wrappedJSObject (fixed in tracemonkey, 1/13)</li>
+      <li><a class="bug p1">bug 626830</a> jsd.asyncOn fails</li>
     </ul>
   </body>
 </html>
