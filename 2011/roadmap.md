@@ -1,5 +1,6 @@
 ---
 title: Developer Tools 2011
+layout: page
 ---
 
 # Developer Tools 2011 #
