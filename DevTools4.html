@@ -95,7 +95,7 @@
   </head>
   <body>
     <h1>Firefox 4 Developer Tools Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 19, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 21, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -165,22 +165,21 @@
     <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
     <p>Open UI polish bugs:</p>
     <ul>
-      <li><a class="bug waiting p2">bug 592309</a> Web Console should use &lt;description> elements instead of &lt;label> elements for its output (test selection/copying now that 605621 has landed, 1/20)</li>
-      <li><a class="bug waiting p1">bug 613280</a> Cannot copy result text in console (test needs to land, 1/20)</li>
+      <li><a class="bug commit p1">bug 613280</a> Cannot copy result text in console (test needs to land, 1/21)</li>
       <li><a class="bug patch p1">bug 609372</a> better icons for the web console (patch rebased, 1/20)</li>
       <li><a class="bug approval p2">bug 611440</a> Smart abbreviation for URLs in the Web Console (f+, needs r+/a+, 1/20)</li>
       <li><a class="bug blocker p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
       <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
-      <li><a class="bug review p2">bug 615805</a> Resizing Inspect Network Request window causes window to move (review- from karl, needs new patch and possibly additional bug 12/20)</li>
       <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider</li>
-      <li><a class="bug p3">bug 620744</a> Network request popups can't be closed with a tiled window manager</li>
       <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
       <li><a class="bug p2">bug 622303</a> Web Console should remember filter settings</li>
       <li><a class="bug p2">bug 623749</a> Add shortcut or popup menu to enable Select-All in console input line</li>
       <li><a class="bug p2">bug 626607</a> Select All on webconsole includes messages that were filtered out</li>
       <li><a class="bug p3">bug 626018</a> Make console filtering buttons tri-state</li>
       <li><a class="bug p1">bug 626484</a> Incorrect order of lines when copying from web console</li>
+      <li><a class="bug p2">bug 627710</a> Command completion breaks if unfocusing the input line</li>
+      <li><a class="bug p2">bug 627674</a> Scrollbar is not synced with console's log when events (logs, errors, etc) are thrown fast in log area</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -202,7 +201,7 @@
       <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
-      <li><a class="bug p1 blocker hardblocker">bug 626745</a> security issue</li>
+      <li><a class="bug p1 patch blocker hardblocker">bug 626745</a> security issue (two approaches given (one in another bug), 1/21)</li>
     </ul>
 
     <h2>JavaScript Console</h2>
@@ -240,14 +239,14 @@
       <li><a class="bug test review p2">bug 605634</a> Opening two Web Consoles on the same URI causes errors (waiting since 10/20 for review)</li>
       <li><a class="bug waiting p3">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (looks to be test only, 12/1)</li>
       <li><a class="bug patch p3">bug 588871</a> Remove ConsoleStorage methods used for log message storage</li>
-      <li><a class="bug patch p3">bug 627342</a> re-enable browser_webconsole_js_input_expansion.js</li>
+      <li><a class="bug patch p3">bug 627342</a> re-enable browser_webconsole_js_input_expansion.js (has patch, 1/20)</li>
     </ul>
     
     <h2>Firebug</h2>
     <p>Firebug is a separate project, but it is a critical developer tool. These are the bugs that we need to fix in order to have a working Firebug for Firefox 4.</p>
     <ul>
       <li><a class="bug p1 blocker hardblocker">bug 626909</a> jsd.onError and jsd.onDebug fail</li>
-      <li><a class="bug p1 blocker hardblocker">bug 626830</a> jsd.asyncOn fails</li>
+      <li><a class="bug p1 patch blocker hardblocker">bug 626830</a> jsd.asyncOn fails (has patch, 1/21)</li>
     </ul>
   </body>
 </html>
