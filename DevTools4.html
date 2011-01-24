@@ -95,7 +95,7 @@
   </head>
   <body>
     <h1>Firefox 4 Developer Tools Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 21, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 24, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -167,11 +167,10 @@
     <ul>
       <li><a class="bug commit p1">bug 613280</a> Cannot copy result text in console (test needs to land, 1/21)</li>
       <li><a class="bug patch p1">bug 609372</a> better icons for the web console (patch rebased, 1/20)</li>
-      <li><a class="bug approval p2">bug 611440</a> Smart abbreviation for URLs in the Web Console (f+, needs r+/a+, 1/20)</li>
       <li><a class="bug blocker p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
       <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
-      <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider</li>
+      <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider (has patch, f+ this should be r+, 1/24)</li>
       <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
       <li><a class="bug p2">bug 622303</a> Web Console should remember filter settings</li>
       <li><a class="bug p2">bug 623749</a> Add shortcut or popup menu to enable Select-All in console input line</li>
@@ -180,6 +179,9 @@
       <li><a class="bug p1">bug 626484</a> Incorrect order of lines when copying from web console</li>
       <li><a class="bug p2">bug 627710</a> Command completion breaks if unfocusing the input line</li>
       <li><a class="bug p2">bug 627674</a> Scrollbar is not synced with console's log when events (logs, errors, etc) are thrown fast in log area</li>
+      <li><a class="bug p3">bug 627819</a> Broken icon in the message "The Web Console logging API has been disabled by a script on this page"</li>
+      <li><a class="bug p3">bug 628018</a> Messages in the Web Console are aligned a couple of pixels too high</li>
+      <li><a class="bug p3">bug 628019</a> Web Console cleanup: Use attributes instead of classes for category/severity</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -245,7 +247,7 @@
     <h2>Firebug</h2>
     <p>Firebug is a separate project, but it is a critical developer tool. These are the bugs that we need to fix in order to have a working Firebug for Firefox 4.</p>
     <ul>
-      <li><a class="bug p1 blocker hardblocker">bug 626909</a> jsd.onError and jsd.onDebug fail</li>
+      <li><a class="bug p1 blocker hardblocker">bug 626909</a> jsd.onError and jsd.onDebug fail (gal says that bug 627943 fixes this)</li>
       <li><a class="bug p1 patch blocker hardblocker">bug 626830</a> jsd.asyncOn fails (has patch, 1/21)</li>
     </ul>
   </body>
