@@ -165,21 +165,18 @@
     <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
     <p>Open UI polish bugs:</p>
     <ul>
-      <li><a class="bug commit p1">bug 613280</a> Cannot copy result text in console (test needs to land, 1/21)</li>
-      <li><a class="bug patch p1">bug 609372</a> better icons for the web console (patch rebased, 1/20)</li>
+      <li><a class="bug approval p1">bug 609372</a> better icons for the web console (patch rebased, 1/20)</li>
       <li><a class="bug blocker p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
       <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
-      <li><a class="bug p1">bug 618322</a> Inspect pop-up should have scroll bars and be wider (has patch, f+ this should be r+, 1/24)</li>
       <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
       <li><a class="bug p2">bug 622303</a> Web Console should remember filter settings</li>
       <li><a class="bug p2">bug 623749</a> Add shortcut or popup menu to enable Select-All in console input line</li>
-      <li><a class="bug p2">bug 626607</a> Select All on webconsole includes messages that were filtered out</li>
+      <li><a class="bug p2 commit blocker">bug 626607</a> Select All on webconsole includes messages that were filtered out</li>
       <li><a class="bug p3">bug 626018</a> Make console filtering buttons tri-state</li>
       <li><a class="bug p1">bug 626484</a> Incorrect order of lines when copying from web console</li>
       <li><a class="bug p2">bug 627710</a> Command completion breaks if unfocusing the input line</li>
       <li><a class="bug p2">bug 627674</a> Scrollbar is not synced with console's log when events (logs, errors, etc) are thrown fast in log area</li>
-      <li><a class="bug p3">bug 627819</a> Broken icon in the message "The Web Console logging API has been disabled by a script on this page" (patch, f+, 1/25)</li>
       <li><a class="bug p3">bug 628018</a> Messages in the Web Console are aligned a couple of pixels too high</li>
       <li><a class="bug p3">bug 628019</a> Web Console cleanup: Use attributes instead of classes for category/severity</li>
     </ul>
@@ -203,7 +200,6 @@
       <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
-      <li><a class="bug p1 patch blocker hardblocker">bug 626745</a> security issue (has patch with some review done, 1/25)</li>
     </ul>
 
     <h2>JavaScript Console</h2>
@@ -241,7 +237,7 @@
       <li><a class="bug test review p2">bug 605634</a> Opening two Web Consoles on the same URI causes errors (waiting since 10/20 for review)</li>
       <li><a class="bug waiting p3">bug 598438</a> window.console and window.onerror fail to work in iframes on first Web Console open (looks to be test only, 12/1)</li>
       <li><a class="bug patch p3">bug 588871</a> Remove ConsoleStorage methods used for log message storage</li>
-      <li><a class="bug patch p3">bug 627342</a> re-enable browser_webconsole_js_input_expansion.js (has patch, 1/20)</li>
+      <li><a class="bug patch p3">bug 627342</a> re-enable browser_webconsole_js_input_expansion.js (f+, 1/28)</li>
     </ul>
     
     <h2>Firebug</h2>
