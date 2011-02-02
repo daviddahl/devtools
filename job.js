@@ -3,6 +3,7 @@ require.ready(function() {
     $('body').append(element);
     require(['jquery32'], function(jq32) {
         for (var k in jq32) {
+            window["old" + k] = window[k];
             window[k] = jq32[k];
         }
     });
