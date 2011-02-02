@@ -95,7 +95,7 @@
   </head>
   <body>
     <h1>Firefox 4 Developer Tools Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, January 25, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, February 2, 2011</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -165,11 +165,10 @@
     <p>The toolbar reformatting is particularly important, because it makes the filtering a lot more usable.</p>
     <p>Open UI polish bugs:</p>
     <ul>
-      <li><a class="bug approval p1">bug 609372</a> better icons for the web console (patch rebased, 1/20)</li>
       <li><a class="bug blocker p2">bug 611795</a> Repeated messages in the Web Console should be collapsed into one</li>
       <li><a class="bug patch p2">bug 612252</a> "clear console" needs a keyboard shortcut in a bad way</li>
       <li><a class="bug waiting p2">bug 612253</a> Need a shortcut key to focus the input line in web console</li>
-      <li><a class="bug p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles</li>
+      <li><a class="bug patch p3">bug 619598</a> Up and Down does not retrieve command history in the same way as other consoles (new patch, 2/2)</li>
       <li><a class="bug p2">bug 622303</a> Web Console should remember filter settings</li>
       <li><a class="bug p2">bug 623749</a> Add shortcut or popup menu to enable Select-All in console input line</li>
       <li><a class="bug p2 commit blocker">bug 626607</a> Select All on webconsole includes messages that were filtered out</li>
@@ -200,6 +199,7 @@
       <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
+      <li><a class="bug p1">bug 630733</a> web console does not report data which the server did send (301, 302 and 303)</li>
     </ul>
 
     <h2>JavaScript Console</h2>
