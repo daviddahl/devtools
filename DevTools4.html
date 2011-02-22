@@ -95,7 +95,9 @@
   </head>
   <body>
     <h1>Firefox 4 Developer Tools Completion Status</h1>
-    <p><a href="http://scr.im/kdangoor">kdangoor</a>, February 8, 2011</p>
+    <p><a href="http://scr.im/kdangoor">kdangoor</a>, February 22, 2011</p>
+    <h2>Important update about this document's status</h2>
+    <p>This has now entered the realm of historical material. Firefox 4 is nearly ready to lave beta as I write this, which means that little of what's on the lists below has any shot of landing.</p>
     <h2>Overview</h2>
     <p>The Web Console feature in Firefox 4 is an important tool for developers. This document is intended to make it easy to understand the work that remains for the Web Console.</p>
     <p>The current draft documentation for the Web Console feature is <a href="https://developer.mozilla.org/en/Using_the_Web_Console">up on MDC</a>.</p>
@@ -177,6 +179,7 @@
       <li><a class="bug p2">bug 627674</a> Scrollbar is not synced with console's log when events (logs, errors, etc) are thrown fast in log area</li>
       <li><a class="bug p3">bug 628018</a> Messages in the Web Console are aligned a couple of pixels too high</li>
       <li><a class="bug p3">bug 628019</a> Web Console cleanup: Use attributes instead of classes for category/severity</li>
+      <li><a class="bug blocker p2 commit">bug 632817</a> Cannot filter search for NET events in the Web console (patch has f-, 2/11)</li>
     </ul>
     
     <h2>Logging Functionality</h2>
@@ -198,13 +201,13 @@
       <li><a class="bug patch blocker p1">bug 595223</a> log loading from file:// urls (new patch for review, 1/7)</li>
       <li><a class="bug p2">616742</a> citytv website breaks with the way it accesses the console (needs patch)</li>
       <li><a class="bug p3">bug 620935</a> Make console object available in Web Workers</li>
-      <li><a class="bug patch p1">bug 630733</a> web console does not report data which the server did send (301, 302 and 303) (patch with f+, 2/5)</li>
     </ul>
 
     <h2>JavaScript Console</h2>
     <p>These are improvements we want to make to the JavaScript command line:</p>
     <ul>
       <li><a class="bug p2">bug 621644</a> $ is shadowed in web console (new on 12/27, discussion on 1/3)</li>
+      <li><a class="bug p2">bug 632686</a> Infinite loops of "console.log" don't bring up the slow script dialog</li>
     </ul>
     
     <h2>Other bugs</h2>
@@ -239,11 +242,9 @@
       <li><a class="bug p3">bug 632275</a> Web Console: Error message when click on an object to create an inspect window</li>
     </ul>
     
-    <h2>Firebug</h2>
+    <!-- <h2>Firebug</h2>
     <p>Firebug is a separate project, but it is a critical developer tool. These are the bugs that we need to fix in order to have a working Firebug for Firefox 4.</p>
     <ul>
-      <li><a class="bug p1 blocker hardblocker">bug 626909</a> jsd.onError and jsd.onDebug fail (gal says that bug 627943 fixes this)</li>
-      <li><a class="bug p1 blocker hardblocker">bug 632343</a> Running automated Firebug tests crashes Firefox [@ js::mjit::EnterMethodJIT]</li>
-    </ul>
+    </ul> -->
   </body>
 </html>

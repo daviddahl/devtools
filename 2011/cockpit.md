@@ -13,3 +13,7 @@ Cockpit was created as part of the merger between Mozilla Skywriter and
 Ajax.org's Ace. It provides a graphical command line interface. This
 document describes our planned evolution of Cockpit as part of our
 overall tools effort.
+
+# Open Questions #
+
+1. can we build command metadata for functions like alert from IDL?

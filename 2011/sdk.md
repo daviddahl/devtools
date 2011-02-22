@@ -48,7 +48,7 @@ Project non-goals:
 
 1. How do we structure things so that the process boundaries don't slow the tools
 down too much?
-2. Can all tools be restartless?
+2. how do we automate tests to ensure that the SDK isn't broken by platform changes?
 
 # SDK Details #
 
