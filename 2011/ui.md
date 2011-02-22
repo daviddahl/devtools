@@ -40,7 +40,22 @@ guidelines that will make the tools work together.
 
 ## Open Questions ##
 
-1. Panels need to be floatable and dockable, ideally mobile between windows
+1. Panels need to be floatable and dockable
 2. what is the scope of panels and how does it change as you move between tabs?
+3. how can panels that are frequently used together be denoted as such?
+4. how do we handle "activation"? (Which sites the tools show up for automatically? which tools? how are they grouped? how do we keep expensive tools from slowing things down?)
 
 # sharing panels with Firebug #
+
+# Alert Mechanism #
+
+All installed tools should be able to alert the user, regardless of which tools are open. Note that this gets into the "activation problem" that Firebug has solved.
+
+Alerts to consider:
+
+1. this page is now consuming more than X memory
+2. this page took more than Y time until document was ready
+
+# Gauges #
+
+Another idea: add-ons could provide "gauges" which would generally be viewed together in a strip. Memory, CPU usage, network traffic, framerate. Anything that can be displayed in compact way.
