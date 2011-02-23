@@ -17,3 +17,5 @@ overall tools effort.
 # Open Questions #
 
 1. can we build command metadata for functions like alert from IDL?
+2. select elements via CSS selectors and then pass that to object inspector or DOM inspector etc.
+3. output area with full UIs for things like inspection?
