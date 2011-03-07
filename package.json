@@ -1,8 +1,9 @@
 {
-  "name": "devtools",
-  "fullName": "devtools",
-  "description": "a basic add-on",
-  "author": "",
-  "license": "MPL 1.1/GPL 2.0/LGPL 2.1",
-  "version": "0.1"
+    "name": "devtools", 
+    "license": "MPL 1.1/GPL 2.0/LGPL 2.1", 
+    "author": "", 
+    "version": "0.1", 
+    "fullName": "devtools", 
+    "id": "jid0-aOXDLvL6vio9DfnGg4UxtaplLoc", 
+    "description": "a basic add-on"
 }
